@@ -1,0 +1,22 @@
+<include file="Common:header" />
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">{$title}</h1>
+	</header>
+	<div class="mui-content bg-white">
+		<ul class="mui-table-view">
+			<volist name="info" id="v">
+		        <li class="mui-table-view-cell">
+		            <a class="mui-navigate-right" href="{:U('index/show',array('id'=>$v['id']))}">
+		                {$v.title}
+		            </a>
+		        </li>
+		    </volist>
+		    </ul>
+			<div class="mui-clearfix"></div>
+	      	<div class="mb-10 mt-10">
+    		<div class="pagination">{$page}{$tip}</div>
+    	</div>
+
+	</div>	
+<include file="Common:footer" />

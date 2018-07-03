@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>jQuery日期/日历插件Ion.Calendar演示-每周第一天_sucaihuo</title>
+<link rel="stylesheet" href="css/ion.calendar.css">
+<style>
+.sucaihuo { width: 250px; padding: 10px; background-color: #efefef;}
+</style>
+</head>
+
+<body>
+<h1>每周第一天</h1>
+
+<div class="sucaihuo">
+	<div id="calendar"></div>
+</div>
+
+<script src="../jquery.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/moment.zh-cn.js"></script>
+<script src="js/ion.calendar.min.js"></script>
+<script>
+$(function(){
+	$("#calendar").ionCalendar({
+		lang: 'zh-cn',
+		sundayFirst: false
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="vad">
+	<a href="http://www.sucaihuo.com/" target="_blank">sucaihuo.com</a>
+	<a href="http://www.sucaihuo.com/js/186.html" target="_blank">说 明</a>
+	<a href="http://www.sucaihuo.com/js/186.html" target="_blank">下 载</a>
+</p>
+
+<div class="menu">
+	<a href="index.html">1、默认</a>
+	<a class="cur" href="index2.html">2、每周第一天</a>
+	<a href="index3.html">3、输入框插件</a>
+	<a href="index4.html">4、HTML data 属性</a>
+	<a href="index5.html">5、回调函数1</a>
+	<a href="index6.html">5、回调函数2</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script type="text/javascript">
+		window.UEDITOR_HOME_URL='__ROOT__/Ueditor/';
+		window.onload=function(){
+			UE.getEditor('content');
+			}
+        </script>
+		<script src="__ROOT__/Ueditor/ueditor.config.js"></script>
+		<script src="__ROOT__/Ueditor/ueditor.all.min.js"></script>
+		<script src="__PUBLIC__/js/common.js"></script>
+
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+ 	<form action="{:U(GROUP_NAME.'/Article/add')}" method="post" enctype="multipart/form-data"> 
+    <table class="table table-border table-bordered table-bg table-hover table-sort">
+    <tr>
+    <th class="text-r" width="100">{:C('news_chose_catid')}</th>
+	<td>
+	
+	<select class="input-text" name="kinds" style="width:200px">
+    <option value="">=={:C('select_typeid')}==</option>
+   <foreach name="cate" item="v">
+    <option value="{$v.id}">{$v.html}{$v.name}</option>
+    </foreach>
+    </select>
+    </td></tr>
+    <tr>
+    <th class="text-r">{:C('title')}</th>
+    <td><input name="title" type="text" class="input-text" style="width:500px"  /></td>
+    <tr>
+    <th class="text-r">{:C('news_title')}</th>
+    <td><input name="retitle" type="text" class="input-text" style="width:500px"  /></td>
+    </tr>
+    <tr><th class="text-r">{:C('fromlink')}</th><td><input name="url" type="text" class="input-text"  style="width:500px" value="{$config['site_url']}" />&nbsp;&nbsp;如：Http://www.gylongteng.com</td></tr>
+    <tr><th class="text-r">{:C('thumb')}</th><td>
+        <table id="gallery-table" align="center">
+          <tbody>
+         <tr >
+            <td align="left" height="60">
+            <span class="btn-upload" style="float:left">
+	  <a style="z-index:2;" href="javascript:void();" class="btn-uploadpic">浏览</a>
+	  <input type="file" name="file"  id="imgong" onchange="preImg(this.id,'img1');" value="{$sys['logo']}" class="input-file">
+	  </span><span class="ml-10" style="float:left;" ><img id="img1" src="" style="display: block;" /></span>
+           </td>
+          </tr>
+        </tbody>
+        </table>
+    </td></tr>
+    <tr id="last"><th class="text-r">{:C('news_keywords')}</th><td><input name="key" type="text" class="input-text" style="width:500px" value="{$config['seo_keywords']}" />&nbsp;&nbsp;多个关键词用“,”隔开，字数控制在100个以内</td></tr>
+    <tr><th class="text-r">{:C('news_description')}</th><td><textarea name="description"  style="width:500px" class="textarea" /></textarea></td></tr>
+    
+    
+    <tr><th class="text-r">{:C('content')}</th><td>
+    <textarea id="content"  name="contents" style="width:100%;height:400px;"></textarea>
+    </td></tr>
+	<tr>
+		<th class="text-r">作者</th>
+		<td><input name="write" type="text"  value="{$_SESSION['username']}" class="input-text"  style="width:500px;"/></td>
+	</tr>
+	<tr>
+		<th class="text-r">发布时间</th>
+		<td>
+		<input type="text" class="date input-text" style="width:200px;" name="time" placeholder="请选择日期" value="<?php echo date('Y-m-d H:i:s',time())?>">
+		</td>
+	</tr>
+<!--     <tr>
+   <th class="text-r">属性选择</th>
+    <td>
+	<foreach name="attr" item="v">
+
+	<input type="checkbox" name="aid[]" value="{$v.id}" style="margin-left:10px;" >{$v.name}
+
+    </foreach>
+
+	</td>
+    </tr>
+-->    
+    <tr><th class="text-r">{:C('status_ok')}</td><td><cite><input name="status" type="radio" value="1" checked="checked" />{:C('yes')}&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" />{:C('no')}</cite></td></tr>
+	
+    <tr><th class="text-r">&nbsp;</td><td><input name="submit" type="submit" class="btn" value="{:C('on_save')}"/></td></tr>
+</table>    
+    </form>
+	</div>
+	</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

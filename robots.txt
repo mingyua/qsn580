@@ -1,0 +1,6 @@
+# robots.txt generated at http://www.qsn580.com/robots.txt.php
+User-agent: *
+Disallow: 
+Disallow: /public/
+Disallow: /uploads/
+Disallow: /backup/

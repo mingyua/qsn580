@@ -1,0 +1,100 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a href="javascript:;"><i class="Hui-iconfont Hui-iconfont-manage"></i>客服列表</a></span>
+<span class="topshadow bgdel"><a href="javascript:;" onClick="all_del(this,'{:U(GROUP_NAME.'/qq/delall')}')"><i class="Hui-iconfont Hui-iconfont-del2 "></i>批量删除</a></span>
+<span class="topshadow bgf5 right"><a href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont Hui-iconfont-huanyipi"></i></a></span>
+<span class="topright">
+    <form class="Huiform" method="post" action="{:U(GROUP_NAME. '/qq/set')}" target="_self">
+      偏移高度：
+	  <input type="text" class="input-text" name="m-top" value="{$set.mtop}" style="width:150px;">
+      显示位置：
+	  <span class="select-box" style="width:150px;">
+      <select class="select" name="pos" size="1">
+				<option value="{$set.pos}"><if condition='$set["pos"]==left'>靠左显示<else/>靠右显示</if> </option>
+				<option value="left">靠左显示</option>
+				<option value="right">靠右显示</option>
+      </select>
+       </span>
+      是否展开：
+	  <span class="select-box" style="width:150px;">
+      <select class="select" name="min" size="1">
+				<option value="{$set.min}"><if condition='$set["min"]==false'>展开<else/>关闭</if> </option>
+				<option value="false">展开</option>
+				<option value="true">关闭</option>
+      </select>
+       </span>
+     皮肤：
+	  <span class="select-box" style="width:150px;">
+      <select class="select" name="skin" size="1">
+				<option value="{$set.skin}">
+				<if condition='$set["skin"]==gray'>灰色</if>
+				<if condition='$set["skin"]==blue'>蓝色</if>
+				<if condition='$set["skin"]==yellow'>黄色</if>
+				<if condition='$set["skin"]==green'>绿色</if>
+				<if condition='$set["skin"]==orange'>橙色</if>
+				<if condition='$set["skin"]==white'>白色</if>
+				</option>
+				<option value="gray">灰色</option>
+				<option value="blue">蓝色</option>
+				<option value="yellow">黄色</option>
+				<option value="green">绿色</option>
+				<option value="orange">橙色</option>
+				<option value="white">白色</option>
+      </select>
+      </span>
+      展开速度：	  
+	  <span class="select-box" style="width:150px;">
+      <select class="select" name="speed" size="1">
+				<option value="{$set.speed}">{$set.speed}</option>
+				<option value="500">500</option>
+				<option value="1000">1000</option>
+      </select>
+      </span>
+   
+  
+      <input type="submit" class="btn btn-success" id="" name="submit" value="保存">
+    </form></span>
+</div>
+<div class="admin">
+<div class="pd-20">
+  <div class="text-c mb-20">
+
+  </div>
+
+
+ <form name="form1" onSubmit="return checkSubmit()" action="{:U(GROUP_NAME.'/Slide/delall','','')}"  method="post">
+<table class="table table-border table-bordered table-bg table-hover table-sort">    
+     <thead>
+      <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="80">序号</th>
+        <th>标题</th>
+        <th width="200">QQ</th>
+        <th width="70">操作</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+     <foreach name='qq' item='v'>
+    <tr  class="text-c">
+    <td><input type="checkbox" value="" name=""></td>
+    <td>{$v.id}</td>
+    <td>{$v.title}</td>
+    <td>{$v.qq}</p></td>
+          <td class="f-14"><a title="编辑" href="javascript:;" onclick="comm_edit('分类编辑','{:U(GROUP_NAME.'/Qq/edit',array('id'=>$v['id']))}')" style="text-decoration:none"><i class="Hui-iconfont Hui-iconfont-edit"></i></a> <a title="删除" href="javascript:;" onclick="comm_del(this,'{$v.id}','{:U(GROUP_NAME.'/Qq/del',array(id=>$v['id']))}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont Hui-iconfont-del2"></i></a></td>
+    </tr>
+    </foreach>    
+    
+    </tbody>
+    
+    </table>
+    </form>
+	<div class="pagination">{$page}</div><br><br>
+	</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

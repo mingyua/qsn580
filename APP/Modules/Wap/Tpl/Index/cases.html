@@ -1,0 +1,27 @@
+<include file="Common:header" />
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">{$title}</h1>
+	</header>
+	<div class="mui-content bg-white">
+		<ul class="mui-table-view">
+			<volist name="info" id="v">
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}">
+			            <img class="mui-pull-left mr-10" src="{$v.pic}" width="100" height="100">
+			            <div class="mui-media-body mui-ellipsis c-title">
+			                {$v.title}<p class='mui-ellipsis-2 f-12 mt-10' style="height: 60px;overflow: hidden;">{$v.keywords}</p>			                
+			            </div>	
+			            
+			        </a>			        
+			    </li>					
+			</volist>
+		</ul>	
+		<div class="mui-clearfix mt-10"></div>
+    	<div class="mb-10">
+    		<div class="pagination">{$page}{$tip}</div>
+    	</div>
+		
+	</div>
+	
+<include file="Common:footer" />

@@ -1,0 +1,1 @@
+<?phpclass SlideWidget extends Widget {    public function render($data){		$a=1;	$data['slide']=M('slide')->field('id,kinds,pic',false)->where("kinds='106' and status='1'")->order('sort ASC')->select();		foreach($data['slide'] as $k=>$v){			$data['slide'][$k]['tip']=$a;			$a++;			}	return $this->renderFile('',$data);	    }	}

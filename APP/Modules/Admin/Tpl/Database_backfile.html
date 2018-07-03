@@ -1,0 +1,45 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>幻灯片添加</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="iconfont">&#xf012b;</i> 首页 <span class="c-gray en">&gt;</span> 幻灯片添加 <span class="c-gray en">&gt;</span> 幻灯片添加 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="icon-refresh"></i></a></nav>
+<div class="pd-20">
+ <form name="form1" onSubmit="checkSubmit()" action="{:U(GROUP_NAME.'/Database/deletebak')}" method="post">
+<table class="table table-border table-bordered table-hover table-bg">
+<thead>
+       <tr>
+        <th scope="col" colspan="6" class="text-r"><input type="submit" name="Submit" value="删除" class="btn btn-primary radius" /></th>
+      </tr>
+   	<tr class="text-c">
+        <th><input type="checkbox" name="tables" value=""></th>
+        <th>备份文件名</th>
+        <th>备份文件大小</th>
+        <th>备份文件类型</th>
+        <th>备份文件日期</th>
+        <th>备份操作</th>
+        </tr>
+        </thead>
+        <foreach name='files' item='v'>
+  <tr class="text-c">
+    <td>
+<input type="checkbox" name="tables" value="{$v.name}"> 
+</td>
+    <td width="25%">{$v.name}</td>
+    <td width="10%">{$v.size}</td>
+<td width="10%">{$v.name|substr=-3}</td>
+<td width="20%">{$v.time}</td>
+    <td>
+    <a href="{:U(GROUP_NAME.'/Database/restore',array('file'=>$v['name']),'')}">还原</a> |
+    <a href="{:U(GROUP_NAME.'/Database/downloadBak',array('file'=>$v['name']),'')}">下载</a> |
+    <a href="{:U(GROUP_NAME.'/Database/deletebak',array('file'=>$v['name']),'')}">删除</a> 
+  </td>
+  </tr>
+  </foreach>  
+</table>  
+   </form>
+   </div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+
+</body>
+</html>

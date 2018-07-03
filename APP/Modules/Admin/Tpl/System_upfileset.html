@@ -1,0 +1,169 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script src="__PUBLIC__/js/common.js"></script>
+<script src="__PUBLIC__/lib/jquery.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/lib/color/css/jquery.cxcolor.css">
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a href="javascript:;"><i class="Hui-iconfont Hui-iconfont-manage"></i>上传配置</a></span>
+</div>
+
+<div class="admin">
+<div class="pd-20">
+<form action="{:U(GROUP_NAME.'/System/upfileset')}" method="post" enctype="multipart/form-data">   
+<div id="tab-system" class="HuiTab">
+	<div class="tabBar cl"><span>上传设置</span><span>验证码设置</span></div>
+		<div class="tabCon">
+
+<table class="table table-border table-bordered table-hover table-bg">
+
+    <tr>
+		<th class="text-r" width="100">上传目录</th>
+		<td><input name="upload_path" type="text" style="width:500px" class="input-text" value="{$file['upload_path']}"  />&nbsp;&nbsp;默认：./Uploads</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">附件大小</th>
+		<td><input name="file_size" type="text" style="width:500px" class="input-text" value="{$file['file_size']}" maxlength="7"  />&nbsp;B&nbsp;&nbsp;允许上传附件大小</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">附件类型</th>
+		<td><input name="file_type" type="text" style="width:500px" class="input-text" value="{$file['file_type']}" />&nbsp;&nbsp;允许上传附件类型，多个请用“,“隔开。</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">图片水印</th>
+		<td><cite><input name="status" type="radio" value="1"  <if condition='$file["status"]==1'>checked='checked'</if> />开启&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" <if condition='$file["status"]==0'>checked='checked'</if> />关闭</cite></td>
+	</tr>
+    <tr>
+		<th>水印文字内容</th>
+		<td><input type="text" id="url1" value="{$file['font_water']}" style="width:500px" class="input-text" name="font_water" maxlength="40"  /> 
+		</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">文字大小</th>
+		<td><input name="font_size" type="text" style="width:500px" class="input-text" value="{$file['font_size']}" maxlength="3"  />&nbsp;&nbsp;</td>
+	</tr>
+
+    <tr><th class="text-r" width="100">文字颜色</th><td>
+	 <input id="color_select" name="font_color" type="text" class="input_cxcolor" readonly value="{$file['font_color']}">
+		<script src="__PUBLIC__/lib/color/jquery.cxcolor.min.js"></script>
+		<script>
+		$('#color_select').cxColor();
+		</script>
+
+    &nbsp;&nbsp;#FFFFFF为白色，#000000为黑色</td></tr>
+    
+    <tr><th class="text-r" width="100">水印添加条件</th><td>
+    <input name="water_w" type="text" style="width:100px" class="input-text" value="{$file['water_w']}" maxlength="3"  />PX宽&nbsp;&nbsp;&nbsp;&nbsp;
+    <input name="water_h" type="text" style="width:100px" class="input-text" value="{$file['water_h']}" maxlength="3"   />PX高</td></tr>
+    
+    <tr><th class="text-r" width="100">水印添加图片</th><td>
+	<span class="btn-upload" style="float:left">
+		  <a style="z-index:2;" href="javascript:void();" class="btn-uploadpic">浏览</a>
+		  <input type="file" name="file"  id="imgong" onchange="preImg(this.id,'img1');" value="{$sys['logo']}" class="input-file">
+		  </span><span class="ml-10" style="float:left;" ><img id="img1" src="__ROOT__/{$file['water_image']}" style="display: block;max-height:60px;" /></span>
+	  
+    
+   </td></tr>
+    
+    <tr><th class="text-r" width="100">水印透明度</th><td><input name="opacity" type="text" style="width:500px" class="input-text" value="{$file['opacity']}" maxlength="2"  /></td></tr>
+    
+    <tr><th class="text-r" width="100">水印边距</th><td><input name="water_p" type="text" style="width:500px" class="input-text" value="{$file['water_p']}"  maxlength="3"  /></td></tr>
+    
+    <tr><th class="text-r" width="100">水印位置</th>
+	<td height="110">
+		<table class="lh-30 table-bordered text-c" >
+			<tr>
+				<td width="80">
+				<input id="water_pos" name="water_pos" type="radio" value="0" <if condition='$file["water_pos"]==0'>checked='checked'</if> /><label for="water_pos">随机位置</label>
+				</td>
+				<td width="80" >
+				   <input id="water_pos1" name="water_pos" type="radio" value="1" <if condition='$file["water_pos"]==1'>checked='checked'</if> /><label for="water_pos1">顶部居左</label><br />
+				   <input id="water_pos4" name="water_pos" type="radio" value="4" <if condition='$file["water_pos"]==4'>checked='checked'</if> /><label for="water_pos4">中部居左</label><br />
+				   <input id="water_pos7" name="water_pos" type="radio" value="7" <if condition='$file["water_pos"]==7'>checked='checked'</if> /><label for="water_pos7">底部居左</label><br />
+				</td>
+				<td width="80">
+				   <input id="water_pos2" name="water_pos" type="radio" value="2" <if condition='$file["water_pos"]==2'>checked='checked'</if> /><label for="water_pos2">顶部居中</label><br />
+				   <input id="water_pos5" name="water_pos" type="radio" value="5" <if condition='$file["water_pos"]==5'>checked='checked'</if>/><label for="water_pos5">中部居中</label><br />
+				   <input id="water_pos8" name="water_pos" type="radio" value="8" <if condition='$file["water_pos"]==8'>checked='checked'</if>/><label for="water_pos8">底部居中</label><br />
+				</td>
+				<td width="80">
+				   <input id="water_pos3" name="water_pos" type="radio" value="3" <if condition='$file["water_pos"]==3'>checked='checked'</if>/><label for="water_pos3">顶部居右</label><br />
+				   <input id="water_pos6" name="water_pos" type="radio" value="6" <if condition='$file["water_pos"]==6'>checked='checked'</if>/><label for="water_pos6">中部居右</label><br />
+				   <input id="water_pos9" name="water_pos" type="radio" value="9" <if condition='$file["water_pos"]==9'>checked='checked'</if>/><label for="water_pos9">底部居右</label><br />
+				
+				</td>
+				<td >
+				
+				</td>
+			<tr>
+		</table>   
+    </td></tr>
+    <tr><th class="text-r" width="100">&nbsp;</th><td><input name="submit" type="submit" class="btn" value="保存"/>&nbsp;&nbsp;<input name="reset" type="reset" class="btn" value="重置"/></td></tr></table>
+	<input name="water_image" type="hidden"  value="{$file['water_image']}" />
+    </form>
+	</div>
+	<div class="tabCon">
+		<form action="{:U(GROUP_NAME.'/System/verify')}" method="post">   
+		<table class="table table-border table-bordered table-hover table-bg">
+
+			<tr>
+				<th class="text-r" width="100">验证码长度</th>
+				<td><input name="length" type="text" style="width:500px" class="input-text" value="{$verify['v-length']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">验证码宽</th>
+				<td><input name="width" type="text" style="width:500px" class="input-text" value="{$verify['v-width']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">验证码高</th>
+				<td><input name="height" type="text" style="width:500px" class="input-text" value="{$verify['v-height']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">验证码背景</th>
+				<td><input name="bgcolor" type="text" style="width:500px" class="input-text" value="{$verify['v-bgcolor']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">验证码种子</th>
+				<td><input name="seed" type="text" style="width:500px" class="input-text" value="{$verify['v-seed']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">字体文件</th>
+				<td><input name="fontfile" type="text" style="width:500px" class="input-text" value="{$verify['v-fontfile']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">字体大小</th>
+				<td><input name="size" type="text" style="width:500px" class="input-text" value="{$verify['v-size']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">字体颜色</th>
+				<td><input name="color" type="text" style="width:500px" class="input-text" value="{$verify['v-color']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">保存名称</th>
+				<td><input name="session" type="text" style="width:500px" class="input-text" value="{$verify['v-session']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">类型</th>
+				<td><input name="mode" type="text" style="width:500px" class="input-text" value="{$verify['v-mode']}"  />&nbsp;&nbsp;0为英文大小写;1为数字;2为英文大写;3为英文小写;4为中文;</td>
+			</tr>
+			<tr><th class="text-r" width="100">&nbsp;</th><td><input type="submit" class="btn" value="保存"/>&nbsp;&nbsp;<input name="reset" type="reset" class="btn" value="重置"/></td></tr>
+	   </table>
+	   </form>
+	</div>
+</div>
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<include file='_header'/>
+<style type="text/css">
+#map_container{width:100%;border: 1px solid #999;height:230px;}
+}
+</style>
+<!--
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchControl/1.4/src/SearchControl_min.js"></script>
+-->
+<link rel="stylesheet" href="http://203.195.235.76/jssdk/css/style.css">
+<div class="page-group">
+	<div class="page page-current">
+<header class="bar bar-nav">
+	<a class="dyico  iconfont icon-bian pull-left back"></a>
+	<h1 class="title">{$contact.title}</h1>
+</header>
+<div class="content">			
+<div class="card " style="margin-top:20px">
+    <div class="card-content" >
+      <div class="card-content-inner">
+		<div id="map_container"></div>
+      <button class="btn btn_primary" id="openLocation">导航</button>
+	  {$contact.contents}
+	  
+	  </div>
+    </div>
+</div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+alert(location.href.split('#')[0]);
+  wx.config({
+      debug: true,
+      appId: '{$appId}',
+      timestamp: {$timestamp},
+      nonceStr: '{$noncestr}',
+      signature: '{$signature}',
+	  jsApiList: [
+			'checkJsApi',
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ',
+			'onMenuShareWeibo',
+			'onMenuShareQZone',
+			'hideMenuItems',
+			'showMenuItems',
+			'hideAllNonBaseMenuItem',
+			'showAllNonBaseMenuItem',
+			'translateVoice',
+			'startRecord',
+			'stopRecord',
+			'onVoiceRecordEnd',
+			'playVoice',
+			'onVoicePlayEnd',
+			'pauseVoice',
+			'stopVoice',
+			'uploadVoice',
+			'downloadVoice',
+			'chooseImage',
+			'previewImage',
+			'uploadImage',
+			'downloadImage',
+			'getNetworkType',
+			'openLocation',
+			'getLocation',
+			'hideOptionMenu',
+			'showOptionMenu',
+			'closeWindow',
+			'scanQRCode',
+			'chooseWXPay',
+			'openProductSpecificView',
+			'addCard',
+			'chooseCard',
+			'openCard'
+		  ]
+	  });
+  
+   wx.ready(function () {
+	document.querySelector('#openLocation').onclick = function () {
+    wx.openLocation({
+      latitude: 106.755212,
+      longitude: 26.629212,
+      name: '贵州乾宏汽车拍卖',
+      address: '贵州省贵阳市乌当区工业园区马厂岩路',
+      scale: 15,
+      infoUrl: 'http://www.gzqhqc.com'
+    });
+  };	  
+    // 在这里调用 API
+  });
+</script>
+<script>
+var wid=$(".ueditor_baidumap").hide();
+</script>
+
+<!--
+<script type="text/javascript">
+
+// 创建地图对象并初始化
+var mp = new BMap.Map("map_container");
+var point = new BMap.Point(106.755212,26.629212);
+mp.centerAndZoom(point, 15);
+mp.enableInertialDragging();
+var marker = new BMap.Marker(point);        // 创建标注  
+mp.addOverlay(marker); 
+
+var infoWindow = new BMap.InfoWindow("<p style='font-size:12px;'>欢迎光临<b>{$site.site_title}</b>的官方网站</p><p style='font-size:12px;'>电话:{$site.site_tel}</p><p style='font-size:12px;'>地址:{$site.site_addr}</p>"); 
+mp.openInfoWindow(infoWindow,point); 
+marker.addEventListener("click", function(){        //给标注添加点击事件
+    this.openInfoWindow(infoWindow);
+});
+</script>
+-->
+<include file='_footer'/>

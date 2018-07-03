@@ -1,0 +1,8 @@
+[ 2018-05-08T14:04:31+08:00 ] 42.236.10.81 /index.php/show-5-34-348.html
+INFO: [ route_check ] --START--
+
+[ 2018-05-08T14:04:31+08:00 ] 42.236.10.71 /index.php/show-3-30-387.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002416s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002599s ]
+

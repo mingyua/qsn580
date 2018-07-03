@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>jQuery日期/日历插件Ion.Calendar演示-HTML data属性_sucaihuo</title>
+<link rel="stylesheet" href="css/ion.calendar.css">
+<style>
+.sucaihuo { margin-top: 100px;  text-align: center;}
+.sucaihuo .date { width: 200px; padding: 5px; font-family: Arial, Helvetica, sans-serif;}
+</style>
+</head>
+
+<body>
+<h1>HTML data 属性</h1>
+
+<div class="sucaihuo">
+	<input type="text" class="date" data-lang="zh-cn" data-years="10" data-format="YYYY.MM.DD" data-sundayfirst="false" placeholder="请选择日期">
+</div>
+
+<script src="../jquery.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/moment.zh-cn.js"></script>
+<script src="js/ion.calendar.min.js"></script>
+<script>
+$(function(){
+	$('.date').each(function(){
+		$(this).ionDatePicker();
+	});
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- 以下信息与演示无关，可不必理会 -->
+<style>
+body { margin: 0; border-left: 200px solid #ccc;}
+
+h1 { margin: 40px auto; font: 32px "Microsoft Yahei"; text-align: center;}
+
+.menu { position: absolute; left: 0; top: 0; bottom: 0; width: 200px; padding-top: 100px; font-family: Consolas,arial,"宋体"; background-color: #ccc;}
+.menu a { display: block; height: 40px; margin: 0 0 1px 2px; padding-left: 10px; line-height: 40px; font-size: 14px; color: #333; text-decoration: none;}
+.menu a:hover { background-color: #eee;}
+.menu .cur { color: #000; background-color: #fff !important;}
+
+.vad { margin: 50px 0 10px; font-family: Consolas,arial,宋体,sans-serif; text-align:center;}
+.vad a { display: inline-block; height: 36px; line-height: 36px; margin: 0 5px; padding: 0 50px; font-size: 14px; text-align:center; color:#eee; text-decoration: none; background-color: #222;}
+.vad a:hover { color: #fff; background-color: #000;}
+.thead { width: 728px; height: 90px; margin: 0 auto; border-bottom: 40px solid transparent;}
+</style>
+
+
+
+<p class="vad">
+	<a href="http://www.sucaihuo.com/" target="_blank">sucaihuo.com</a>
+	<a href="http://www.sucaihuo.com/js/186.html" target="_blank">说 明</a>
+	<a href="http://www.sucaihuo.com/js/186.html" target="_blank">下 载</a>
+</p>
+
+<div class="menu">
+	<a href="index.html">1、默认</a>
+	<a href="index2.html">2、每周第一天</a>
+	<a href="index3.html">3、输入框插件</a>
+	<a class="cur" href="index4.html">4、HTML data 属性</a>
+	<a href="index5.html">5、回调函数1</a>
+	<a href="index6.html">5、回调函数2</a>
+</div>
+
+</body>
+</html>

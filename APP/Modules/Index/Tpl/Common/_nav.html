@@ -1,0 +1,25 @@
+<header class="navbar-wrapper1">
+{$topad}
+	<div class="container cl">
+	<a href="" class="logo"><img src="__ROOT__/{$site.logo}"></a>
+	</div>
+	<div class="navbar navbar-blue">
+		<div class="container cl">
+			<div class="nav navbar-nav nav-collapse" role="navigation" id="Hui-navbar">
+				<ul class="cl">
+					<li class="current"><a href="__ROOT__/">首页</a></li>
+					<nav limit='40' order='sort'>
+							<li class="dropDown dropDown_hover"><a href="{$mainurl}" tppabs="{$url}" target="<if condition='$window eq 1'>_blank<else/>_self</if>">{$name}</a> <!--是否有子栏目-->
+								<ul class="dropDown-menu menu radius box-shadow">
+								<foreach name="child" item="v">
+									<li><a href="{$site.site_url}/{$v.url}">{$v.name}</a></li>
+								</foreach>
+								</ul>
+							</li>
+					</nav>		
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</header>

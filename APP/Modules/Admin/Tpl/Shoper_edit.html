@@ -1,0 +1,219 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script type="text/javascript">
+		window.UEDITOR_HOME_URL='__ROOT__/Ueditor/';
+		window.onload=function(){
+			UE.getEditor('content');
+			}
+        </script>
+		<script src="__ROOT__/Ueditor/ueditor.config.js"></script>
+		<script src="__ROOT__/Ueditor/ueditor.all.min.js"></script>
+		<script src="__PUBLIC__/js/common.js"></script>
+
+<title>{$title}</title>
+</head>
+<body>
+
+<div class="admin">
+{$nav}
+		<form action="{:U(GROUP_NAME.'/Shoper/edit')}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
+		<div class="row cl bg-primary">
+		 <div class="col-2 form-label Hui-iconfont Hui-iconfont-edit " style="color:#FFF"> </div>
+		 <div class="col-10 formControls">商家信息</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>商家名称：</label>
+			<div class="formControls col-10">
+				<input type="text" class="input-text" value="{$shoper.name}" placeholder="" id="name" name="name">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>行业选择：</label>
+			<div class="formControls col-2">			
+			<span class="select-box">
+				<select class="select" name="hangye">
+				
+					<option value="{$shoper.hangye}"><if condition="$shoper['hangye'] neq ''">{$shoper.hangye}<else/>请选择</if></option>
+					   <foreach name="hangye" item="v">
+						<option value="{$v.name}">{$v.name}</option>
+						</foreach>
+				</select>
+			</span> 
+			</div>
+			<label class="form-label col-2">排序值：</label>
+			<div class="formControls col-2">
+				<input type="text" class="input-text" value="{$shoper.sort}" placeholder="" id="sort" name="sort">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">所在地区：</label>
+			<div class="formControls col-10">
+				<input type="text" name="provice" id="provice" placeholder="输入省份" value="{$shoper.provice}" class="input-text" style=" width:25%">
+				省
+				<input type="text" name="city" id="city" placeholder="输入市" value="{$shoper.city}" class="input-text" style=" width:25%">
+				市
+				<input type="text" name="area" id="area" placeholder="输入地区" value="{$shoper.area}" class="input-text" style=" width:25%">
+				区 </div>
+		</div>
+		<div class="row cl bg-primary">
+		 <div class="col-2 form-label Hui-iconfont Hui-iconfont-edit " style="color:#FFF"> </div>
+		 <div class="col-10 formControls">联系人信息</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">真实姓名：</label>
+			<div class="formControls col-4">
+				<input type="text" name="realname" id="realname" placeholder="" value="{$shoper.realname}" class="input-text">
+			</div>
+			<label class="form-label col-2">座机号码：</label>
+			<div class="formControls col-4">
+				<input type="text" name="tel" id="tel" placeholder="" value="{$shoper.tel}" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">性别：</label>
+			<div class="formControls col-4"> 
+			<span class="select-box">
+				<select class="select" name="sex">
+					<option value="{$shoper.sex}"><if condition="$shoper['sex'] neq ''">{$shoper.sex}<else/>请选择</if></option>
+					   <foreach name="sexlist" item="v">
+						<option value="{$v.name}">{$v.name}</option>
+						</foreach>
+				</select>
+			</span> 
+			</div>
+			<label class="form-label col-2">手机号码：</label>
+			<div class="formControls col-4">
+				<input type="text" name="phone" id="phone" placeholder="" value="{$shoper.phone}" class="input-text">
+				</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">身份证号码：</label>
+			<div class="formControls col-4">
+				<input type="text" name="cards" id="cards" placeholder="" value="{$shoper.cards}" class="input-text">
+				</div>
+			<label class="form-label col-2">号码QQ：</label>
+			<div class="formControls col-4">
+				<input type="text" name="qq" id="qq" placeholder="" value="{$shoper.qq}" class="input-text">
+				</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">出生年月：</label>
+			<div class="formControls col-4">
+				<input type="text" name="bothday" id="bothday" placeholder="" value="{$shoper.bothday}" class="date-ymd input-text">
+				</div>
+			<label class="form-label col-2">邮箱：</label>
+			<div class="formControls col-4 email">
+				<input type="text" name="email" id="email" placeholder="" value="{$shoper.email}" class="input-text">
+				<ul class="on_changes" style="position: absolute; left: 0px; top: 42px;z-index:9999">
+					<li email="">请选择邮箱类型</li>
+					<li email=""></li>
+					<li email="@qq.com"></li>
+					<li email="@sina.com"></li>
+					<li email="@163.com"></li>
+					<li email="@hotmail.com"></li>
+					<li email="@126.com"></li>
+					<li email="@gmail.com"></li>
+					<li email="@yahoo.com"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">联系地址：</label>
+			<div class="formControls col-10">
+				<input type="text" name="addr" id="addr" placeholder="多个关键字用英文逗号隔开，限10个关键字" value="{$shoper.addr}" class="input-text">
+			</div>
+		</div>
+		<div class="row cl bg-primary">
+		 <div class="col-2 form-label Hui-iconfont Hui-iconfont-edit " style="color:#FFF"> </div>
+		 <div class="col-10 formControls">备案信息</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">域名：</label>
+			<div class="formControls col-10">
+				<input type="text" name="url" id="url" placeholder="" value="{$shoper.url}" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">开始时间：</label>
+			<div class="formControls col-4">
+				<input type="text" class="date input-text" style="width:180px;" name="starttime" placeholder="请选择日期" value="{$shoper.start-time|date='Y-m-d H:i:s',###}">
+			</div>
+			<label class="form-label col-2">结束时间：</label>
+			<div class="formControls col-4">
+				<input type="text" class="date input-text" style="width:180px;" name="endtime" placeholder="请选择日期" value="{$shoper.end-time|date='Y-m-d H:i:s',###}">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">服务器IP：</label>
+			<div class="formControls col-10">
+			<span class="select-box">
+				<select class="select" name="ip">
+					<option value="{$shoper.ip}">{$shoper.ip}</option>
+					   <foreach name="ip" item="v">
+						<option value="{$v.name}">{$v.name}</option>
+						</foreach>
+				</select>
+			</span> 
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">备注：</label>
+			<div class="formControls col-10">
+				<textarea name="description"  class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">{$shoper.description}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">形象图片：</label>
+			<div class="formControls col-10">
+				<div class="uploader-thum-container">
+					<span class="btn-upload" style="float:left">
+					  <a style="z-index:2;" href="javascript:void();" class="btn-uploadpic">浏览</a>
+					  <input type="file" name="file"  id="imgong" onchange="preImg(this.id,'img1');" value="" class="input-file">
+					  </span><span class="ml-10" style="float:left;" ><img id="img1" src="" style="display: block;" /></span>
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">详细内容：</label>
+			<div class="formControls col-10"> 
+				<textarea id="content" name="contents"  style="width:100%;height:400px;">{$shoper.contents}</textarea> 
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-10 col-offset-2">
+				<input name="id" type="hidden"  value="{$shoper['id']}" />
+
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+				
+		</form>
+
+
+
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script type="text/javascript" src="__PUBLIC__/js/inputmail.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$("#email").changeTips({
+			divTip:".on_changes"
+		}); 
+	})
+	</script>
+
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+</script>
+
+</body>
+</html>

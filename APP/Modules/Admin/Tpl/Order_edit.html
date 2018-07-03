@@ -1,0 +1,68 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+<form class="Huiform" method="post" action="{:U(GROUP_NAME. '/Order/edit')}" target="_self">
+  <table class="table table-border table-bordered table-bg">
+	<tr>
+		<td>订单编号</td>
+		<td>
+		 <input type="text" placeholder="订单编号" name="ordid" autocomplete="off" value="{$order['ordid']}" class="input-text" >
+	    </td>
+	</tr>
+	<tr>
+		<td>订单名称</td>
+		<td>
+		<input type="text" placeholder="订单名称" name="ordtitle" autocomplete="off" value="{$order['ordtitle']}" class="input-text" >
+	    </td>
+	</tr>
+	<tr>
+		<td>用户名</td>
+		<td>
+		<input type="text" placeholder="用户名" name="username" autocomplete="off" value="{$order['username']}" class="input-text" >
+	    </td>
+	</tr>
+	<tr>
+		<td>出价金额</td>
+		<td>
+		<input type="text" placeholder="出价金额" name="price" autocomplete="off" value="{$order['ordfee']}" class="input-text" >
+	    </td>
+	</tr>
+	<tr>
+		<td>交易状态</td>
+		<td>
+		<select class="select" name="ordstatus" style="height:30px">
+			<option value="{$order.ordstatus}"><if condition="$order['ordstatus'] eq '6'" > 已退车 <elseif condition="$order['ordstatus'] eq '1'"/>待付款 <elseif condition="$order['ordstatus'] eq '2'"/>待提车 <elseif condition="$order['ordstatus'] eq '3'"/>待过户 <elseif condition="$order['ordstatus'] eq '4'"/>交易完成 <elseif condition="$order['ordstatus'] eq '5'"/>仲裁中<else />请选择</if></option>
+			<option value="1">待付款</option>
+			<option value="2">待提车</option>
+			<option value="3">待过户</option>
+			<option value="4">交易完成</option>
+			<option value="5">仲裁中</option>
+			<option value="6">已退车</option>
+		</select>
+	</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+		<input type="hidden" name="id" value="{$order['id']}">
+		<input type="hidden" name="uid" value="{$order['userid']}">
+		<input type="hidden" name="pid" value="{$order['productid']}">
+		<input type="hidden" name="cash" value="{$cashs}">
+
+			<input type="submit" class="btn btn-success" id="" name="submit" value="修  改">
+		 </td>
+	</tr>
+	
+	</table>
+  	 </form>
+
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>
+ 

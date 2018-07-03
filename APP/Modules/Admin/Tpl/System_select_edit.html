@@ -1,0 +1,55 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+    <form action="{:U(GROUP_NAME.'/System/select_edit')}" method="post" id="form-article-class" enctype="multipart/form-data">
+    <table class="table table-border table-bordered table-hover table-bg">
+    	<input type="hidden" value="{$mode}" />
+    	<tr>
+        	<td width="150">上级导航</td>
+            <td>
+            	<select class="select" id="sel_Sub"  name="pid">
+            	<option value="<if condition="$kname['id'] neq null" >{$kname['id']}<else/>0</if>"><if condition="$kname['id'] neq null" >{$kname.name}<else/>作为一级导航</if></option>
+            	<option value="0">作为一级导航</option>
+                   <foreach name="cate" item="v">
+                    <option value="{$v.id}">{$v.html}{$v.name}</option>
+                    </foreach>
+            	</select>
+            </td>
+        </tr>
+        <tr>
+            <td width="150">导航名称</td>
+            <td><input type="text" name="name" class="input-text" value="{$k.name}" /></td>
+        </tr>
+        <tr>
+            <td width="150">导航标题</td>
+            <td><input type="text" name="title" class="input-text" value="{$k.title}" /></td>
+        </tr>       
+        <tr>
+            <td width="150">导航描述</td>
+            <td><textarea class="textarea" name="description">{$k.description}</textarea></td>
+        </tr>
+        <tr>
+            <td width="150">排序</td>
+            <td><input type="text" name="sort" class="input-text" value="{$k.sort}" /></td>
+        </tr> 
+         <tr>
+            <td width="150">是否显示</td>
+            <td>显示 <input type="radio" name="status" class="" value="1" <if condition="$k['status'] eq 1" > checked="checked" </if>   /> 　
+              不显示 <input type="radio" name="status" class="" value="0" <if condition="$k['status'] eq 0" > checked="checked"  </if>   /> </td>
+        </tr>
+       <input type="hidden" name="id" value="{$k.id}" />
+        <input type="hidden" name="pid" value="{$k.pid}" />
+    	<tr><td></td><td><input type="submit" value="修改" class="btn btn_submit" /></td></tr>
+    </table>
+    </form>
+	
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<include file="Common:_header" />
+ </head>
+  <body>
+<include file="Common:_nav" />
+
+<section id="slide" class=" cl">
+<div id="slider-3">
+	<div class="slider">
+		<div class="bd">
+			<ul>
+				<foreach name="slide" item="v">
+				<li><a href="{$site.site_url}/{$v.url}" target="_blank"><img src="{$v.pic}" ></a></li>
+				</foreach>
+			</ul>
+		</div>
+		<ol class="hd cl rectangle">
+				<foreach name="slide" item="v">
+				<li>1</li>
+				</foreach>
+		</ol>
+	</div>
+</div>	
+</section>
+<section id="aboutindex" class="container cl mt-10">
+	<div class="row cl responsive">
+		<div class="col-8 f-l pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname.url}" class="f-l">{$cname.name}</a><span class="more"><a href="{$site.site_url}/{$cname.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body ">
+					<img src="{$site.site_url}/{$about.pic}" class="f-l mr-10">
+					<div class="about">{$about.description}</div>
+				</div>
+			</div>		
+		</div>
+		<div class="col-4 f-l pl-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname1.url}" alt="新闻资讯" class="f-l">{$cname1.name}</a><span class="more"><a href="{$site.site_url}/{$cname1.url}"  title="更多" alt="更多"  class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="newslist" item="v">
+					<li><a href="show-5-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+	</div>
+</section>
+
+<section id="indexrow3" class="container cl mt-10">
+	<div class="row cl responsive">
+		<div class="col-4 f-l pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname31.url}" alt="父母课堂" class="f-l">{$cname31.name}</a><span class="more"><a href="{$site.site_url}/{$cname31.url}"  title="更多" alt="更多"  class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows31" item="v">
+					<li><a href="show-6-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-4 f-l pl-5 pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname32.url}"  alt="教学特色" class="f-l">{$cname32.name}</a><span class="more"><a href="{$site.site_url}/{$cname32.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows32" item="v">
+					<li><a href="show-3-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-4 f-l pl-5 ">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname33.url}"  alt="疑问解答" class="f-l">{$cname33.name}</a><span class="more"><a href="{$site.site_url}/{$cname33.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows33" item="v">
+					<li><a href="show-6-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+	</div>
+</section>
+<section id="ad" class="container cl mt-10 box-shadow" >
+<foreach name="ad" item="v">
+	<a href="{$v.url}" target="_blank"><img src="{$v.pic}" width="100%"></a>
+</foreach>
+</section>
+<section id="indexrow4" class="container cl mt-10">
+	<div class="row cl responsive">
+		<div class="col-3 f-l  pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname41.url}"  alt="叛逆教育" class="f-l">{$cname41.name}</a><span class="more"><a href="{$site.site_url}/{$cname41.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows41" item="v">
+					<li><a href="show-2-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-3 f-l pl-5 pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname42.url}"  alt="戒除网瘾" class="f-l">{$cname42.name}</a><span class="more"><a href="{$site.site_url}/{$cname42.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows42" item="v">
+					<li><a href="show-2-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-3 f-l pl-5 pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname43.url}"  alt="厌学早恋" class="f-l">{$cname43.name}</a><span class="more"><a href="{$site.site_url}/{$cname43.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows43" item="v">
+					<li><a href="show-2-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-3 f-l pl-5 ">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname44.url}"  alt="心理症结" class="f-l">{$cname44.name}</a><span class="more"><a href="{$site.site_url}/{$cname44.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows44" item="v">
+					<li><a href="show-2-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+	</div>
+</section>
+
+<section id="indexcase" class="container cl mt-10" >
+	<div class="panel panel-primary" >
+		<div class="panel-header"><a href="{$site.site_url}/{$cnamecase.url}" alt="成功案例" class="f-l">{$cnamecase.name}</a><span class="more"><a href="{$site.site_url}/{$cnamecase.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+		<div class="panel-body">
+			<div class="row cl responsive">
+				<div class="col-3 f-l pr-5 pl-5">
+					<img src="{$img1.image}" width="100%">
+					<ul id="lists" class="mt-5">
+					<foreach name="case1" item="v">
+						<li><a href="show-4-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					  </foreach>
+					</ul>
+				</div>
+				<div class="col-3 f-l pr-5 pl-5 ">
+					<img src="{$img2.image}" width="100%">
+					<ul id="lists" class="mt-5">
+					<foreach name="case2" item="v">
+						<li><a href="show-4-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					  </foreach>
+					</ul>
+				</div>
+				<div class="col-3 f-l pr-5 pl-5 ">
+					<img src="{$img3.image}" width="100%">
+					<ul id="lists" class="mt-5">
+					<foreach name="case3" item="v">
+						<li><a href="show-4-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					  </foreach>
+					</ul>
+				</div>
+				<div class="col-3 f-l pl-5 pr-5">
+					<img src="{$img4.image}" width="100%">
+					<ul id="lists" class="mt-5">
+					<foreach name="case4" item="v">
+						<li><a href="show-4-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					  </foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>		
+</section>
+
+<section id="indexpic" class="container cl mt-10" >
+	<div class="panel panel-primary" >
+		<div class="panel-header"><a href="{$site.site_url}/{$cnamevideo.url}" alt="影视风采" class="f-l">{$cnamevideo.name}</a><span class="more"><a href="{$site.site_url}/{$cnamevideo.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+		<div class="panel-body">
+			<div class="picMarquee-left">
+			<div class="bd">
+					<ul class="picList">
+					<foreach name="video" item="v">
+						<li>
+							<div class="pic"><a href="show-1-{$v.kinds}-{$v.id}.html" title="{$v.title}"><img src="{$v.pic}" /></a></div>
+							<div class="title"><a href="show-1-{$v.kinds}-{$v.id}.html" title="{$v.title}">{$v.title}</a></div>
+						</li>
+					</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>		
+</section>
+
+<section id="indexrow4" class="container cl mt-10">
+	<div class="row cl responsive">
+		<div class="col-3 f-l  pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname421.url}" alt="学员心声" class="f-l">{$cname421.name}</a><span class="more"><a href="{$site.site_url}/{$cname421.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows421" item="v">
+						<li><a href="show-5-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-3 f-l pl-5 pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname422.url}" alt="沟通日记" class="f-l">{$cname422.name}</a><span class="more"><a href="{$site.site_url}/{$cname422.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows422" item="v">
+						<li><a href="show-5-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-3 f-l pl-5 pr-5">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname423.url}" alt="家长反馈" class="f-l">{$cname423.name}</a><span class="more"><a href="{$site.site_url}/{$cname423.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows423" item="v">
+						<li><a href="show-5-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		<div class="col-3 f-l pl-5 ">
+			<div class="panel panel-primary">
+				<div class="panel-header"><a href="{$site.site_url}/{$cname424.url}" alt="社会案例" class="f-l">社会案例</a><span class="more"><a href="{$site.site_url}/{$cname424.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+				<div class="panel-body">
+					<ul id="lists">
+					<foreach name="rows424" item="v">
+						<li><a href="show-5-{$v.kinds}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>		
+		</div>
+	</div>
+</section>
+
+ <section id="indexvideo" class="container cl mt-10" >
+	<div class="panel panel-primary" >
+		<div class="panel-header"><a href="{$site.site_url}/{$cnameteam.url}" alt="专家团队" class="f-l">{$cnameteam.name}</a><span class="more"><a href="{$site.site_url}/{$cnameteam.url}" title="更多" alt="更多" class="f-l">+</a></span></div>
+		<div class="panel-body">
+			<div class="picMarquee-left">
+			<div class="bd">
+					<ul class="picList">
+					<foreach name="team" item="v">
+						<li>
+							<div class="pic"><a href="show-1-{$v.kinds}-{$v.id}.html" title="{$v.title}"><img src="{$v.pic}" /></a></div>
+							<div class="title"><a href="show-1-{$v.kinds}-{$v.id}.html" title="{$v.title}">{$v.title}</a></div>
+						</li>
+					</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		</div>
+	</div>		
+</section>
+<section id="ad" class="container cl mt-10 bg-white box-shadow" style="overflow:hidden">
+<foolist model="single" where="kinds = 56">
+   {$d.contents}
+ </foolist>
+ </section> 
+<include file="Common:_footer" />
+		<script id="jsID" type="text/javascript">
+		 var ary = location.href.split("&");
+		jQuery(".picMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:5,interTime:50,trigger:"click"});
+		</script>
+
+<script>
+
+$(function(){
+	jQuery("#slider-3 .slider").slide({mainCell:".bd ul",titCell:".hd li",trigger:"click",effect:"leftLoop",autoPlay:true,delayTime:500,interTime:5000,pnLoop:false,titOnClassName:"active"});
+});
+</script>

@@ -1,0 +1,20 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a href="javascript:;"><i class="Hui-iconfont Hui-iconfont-manage"></i>屏蔽词</a></span>
+</div>
+<div class="admin">
+<form action="{:U(GROUP_NAME.'/System/shielding')}" method="post" id="form-article-class" >
+<div class="pd-20">
+  <div>
+    <textarea class="textarea" style="width:98%; height:300px; resize:none" name="shield">{$words.shield}</textarea>
+  </div>
+  <div class="mt-20 text-c"><input type="submit" id="system-base-save" class="btn btn-success radius button" value="修改"  /></div>
+</div>
+</form>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?phpclass MenuWidget extends Widget {    public function render($data){	$data['single']=M('single')->select();		return $this->renderFile('',$data);	    }	}

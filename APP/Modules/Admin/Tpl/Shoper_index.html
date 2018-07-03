@@ -1,0 +1,83 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a onclick="comm_all_add('添加商家','{:U(GROUP_NAME.'/Shoper/add')}')" href="javascript:;"><i class="Hui-iconfont Hui-iconfont-add"></i>添加商家</a></span>
+<span class="topshadow bgdel"><a href="javascript:;" onClick="all_del(this,'{:U(GROUP_NAME.'/Shoper/delall')}')"><i class="Hui-iconfont Hui-iconfont-del2 "></i>批量删除</a></span>
+<span class="topshadow bgf5 right"><a href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont Hui-iconfont-huanyipi"></i></a></span>
+<span class="topright"><form method="get" action="{:U(GROUP_NAME.'/Shoper/index/')}"><input type="text" placeholder="请输入关键词" class="input-text ac_input" name="key" value="" id="key" autocomplete="off" style="width:300px"><button type="submit" class="btn btn-default" id="search_button">搜索</button></form></span>
+</div>
+<div class="admin">
+<div class="pd-20">
+			<table class="table table-border table-bordered table-bg table-hover table-sort">
+				<thead>
+					<tr class="text-c">
+						<th width="25"><input type="checkbox" name="" value=""></th>
+						<th width="40">ID</th>
+						<th width="100">商家名称</th>
+						<th>官网网址</th>
+						<th width="100">开始/结束</th>
+						<th width="100">联系人</th>
+						<th width="100">联系电话</th>
+						<th width="100">在线客服</th>
+						<th width="100">所在地区</th>
+						<th width="200">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<foreach name='shoper' item='v'>
+					<tr class="text-c">
+						<td><input type="checkbox" value="{$v.id}" name="delall"></td>
+						<td>{$v.id}</td>
+						<td class="text-l">{$v.name}</td>
+						<td><a href="http://www.{$v.url}" target="_blank"> {$v.url}</a></td>
+						<td>{$v.start-time|date='Y-m-d',###}/{$v.end-time|date='Y-m-d',###}</td>
+						<td class="text-l">{$v.realname}({$v.sex})</td>
+						<td>{$v.tel}--{$v.phone}</td>
+						<td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$v.qq}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{$v.qq}:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></td>
+						<td>{$v.provice}-{$v.city}-{$v.area}</td>
+						<td class="comm-manage">
+						<a id="sendemail" class="e-mail" rel="{$v.id}" href="javascript:;" title="发送邮件"><i class="Hui-iconfont Hui-iconfont-fabu"></i>发送邮件</a> 
+						<a class="edit"  onclick="comm_all_add('修改','{:U(GROUP_NAME.'/Shoper/edit',array(id=>$v['id']))})}')" href="javascript:;" title="编辑"><i class="Hui-iconfont Hui-iconfont-edit"></i>修改</a> 
+						<a class="del" onClick="comm_del(this,'{$v.id}','{:U(GROUP_NAME.'/Shoper/del',array(id=>$v['id']))}')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del2"></i>删除</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination cl">{$page}{$tip}</div>
+			<a class="icon" href="__URL__/out2"><span>导出EXCEL</span</a>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.min.js"></script> 
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script type="text/javascript">
+$(function(){
+	$('tbody').on('click','#sendemail',function(){
+		var id=$(this).attr('rel');
+		$.post('__URL__/send_email',{'id':id},function(msg){
+		if(msg==1){
+			alert('邮件发送成功！');
+		}else{
+			alert(msg);
+		}
+		
+		});
+	
+	});
+
+
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* -----------H-ui前端框架-----------------------
+H-ui.admin.css v1.0
+Copyright H-ui Inc.
+http://www.H-ui.net
+date:2014.4.13
+Created & Modified by guojunhui.
+----------------------------------------------*/
+/*---------程序员可自行修改皮肤------------------*/
+html{height:100%}
+body{font-size:14px;color:#333;margin:0;padding:0;min-height: 100%;position: relative;background:#EEEEEE;width:100%;}/*全站默认字体颜色*/
+a{color:#333}a:hover,a:focus,.maincolor,.maincolor a{color:#000}
+
+.topsearch{padding-left:20px;padding-right:20px;padding-top:0;}
+.topshadow{-moz-box-shadow: 0 -2px 11px #CCC ;-webkit-box-shadow: 0 -2px 11px #CCC ;box-shadow: 0 -2px 11px #CCC ;padding:5px 10px;top:20px;color:#fff;border-radius:4px 4px 0 0;position:relative;}
+.topshadow i{font-size:18px;}
+.bgadd{background:#2DC3E8;}
+.bgdel{background:#DD514C;}
+.bgf5{background:#5EB95E;}
+.topshadow a{color:#FFF}
+.topright{position:absolute;right:20px;top:14px;background:#FFF;border-radius:4px 4px 0 0;padding:5px 20px;}
+
+
+.admin .edit{background:#0083FF;padding:5px 5px;color:#FFF;font-size:12px;border-radius:4px;font-weight:100;font-family:'FontAwesome';}
+.admin .del{background:#D3191F;padding:5px 5px;color:#FFF;font-size:12px;border-radius:4px;font-weight:100;font-family:'FontAwesome';}
+.admin .e-mail{background:#2DC3E8;padding:5px 5px;color:#FFF;font-size:12px;border-radius:4px;font-weight:100;font-family:'FontAwesome';}
+
+.bg-1{ background-color:#f5fafe}
+.bg-white{background:#FFF;}
+.admin{background:#fff;margin:20px;-moz-box-shadow: 0 0 14px #CCC;-webkit-box-shadow: 0 0 14px #CCC;box-shadow:0 0 14px #CCC;}
+.Hui-header{background-color:#2DC3E8;border-bottom:#C8CCD5 1px solid;}/*头部颜色*/
+.hui-left{width:199px;overflow:hidden;}
+.userset{position:absolute;z-index:999;float:right;right:0px;font-size:12px;}
+.userset .dropDown.open .dropDown-menu{position:relative;z-index:99;display:inline-block;top:40px;left:16px;min-width:160px;background:#FFF;}
+.userset .dropDown-menu ul{border:solid 1px #ccc;margin-top:-1px}
+.userset .dropDown.hover .dropDown_A,.dropDown.open .dropDown_A{text-decoration:none; background-color:#fff;border:1px solid #ccc;border-bottom:0}
+.userset .userinfo_logo{padding:5px 14px;background:#FFF;position:relative;float:right;right:57px;z-index:999;border:1px solid #FFF;}
+.userset .userinfo_logo:hover{background:#FFF;border:1px solid #999;padding:5px 14px;float:right;right:57px;}
+.userset .userinfo_logo img{width:30px}
+
+.userset .dropDown-menu li a:hover,.dropDown-menu li a:focus{background-color:#F5FAFE;color:#000;text-decoration:none;font-size:12px;}
+.userset .dropDown-menu li:last-child a{ border-bottom:solid 1px #ccc}
+
+.userset  .progress,.progress-bar,.sr-only{height:10px; font-size:0;line-height:0}
+.userset .progress{overflow:hidden; width:140px;-khtml-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px}
+.userset .progress-bar{width:100%;background-color:#efefef}
+.userset .sr-only{display:inline-block; background-color:#58b957}
+
+
+.Hui-aside{background-color:#FFF;color:#000000; -moz-box-shadow: 3px 3px 4px #ccc;-webkit-box-shadow: 3px 3px 4px #ccc;box-shadow: 3px 3px 4px #ccc;}/*侧边栏*/
+	.Hui-logo,.Hui-logo-m{color:#fff;display:block;}/*logo文字颜色*/
+	.Hui-logo:hover,.Hui-logo-m:hover{color:#fff;text-decoration: none}
+	#Hui-nav li a{ color:#999;}/*头部导航文字颜色*/
+	#Hui-nav li a:hover{ color:#fff}
+	#Hui-nav li.current a,#Hui-nav li.current a:hover{ color:#fff; background-color:#111}/*导航高亮状态*/
+/*--------------------H-uiAdmin-------------------------*/
+
+h4{line-height:30px}
+/*页面框架*/
+.Hui-header{ position:absolute;top:0; right:0; left:0;height:40px;z-index:99; overflow:hidden;}
+.Hui-aside{position: absolute;top:40px;bottom:0;left:0;padding-top:10px;width:199px;z-index:99;overflow:auto}
+
+.Hui-article-box{position: absolute;top:41px;right:0;bottom: 0;left:199px; overflow:hidden;}
+	.Hui-article{position: absolute;top:50px;bottom: 0;left:0; right:0;overflow:auto;z-index:1;}
+.Hui-container{ padding:45px 0 0;}
+
+.Hui-aside,.Hui-article-box,.dislpayArrow{-moz-transition: all 0.2s ease 0s;-webkit-transition: all 0.2s ease 0s;-ms-transition: all 0.2s ease 0s;-o-transition: all 0.2s ease 0s;transition: all 0.2s ease 0s}
+.big-page .Hui-article-box,.big-page .dislpayArrow,.big-page .breadcrumb{left:0px}
+.big-page .Hui-aside{ left:-200px}
+
+/*组件*/
+	/*logo*/
+	.Hui-logo,.Hui-logo-m{height:44px; margin-left:20px;cursor:pointer;font-size:16px; font-weight:bold; line-height:40px}
+	.Hui-logo{display:inline-block;padding-right:5px}
+	.Hui-logo:hover,.Hui-logo-m:hover{text-decoration:none; color:#0C0}
+	.Hui-logo-m{display:none;width:45px;margin-left:10px}
+	.Hui-subtitle{ font-size:12px; color:#eee; padding-top:15px}
+	.viewhome{ line-height:44px; padding-right:15px}
+	.viewhome a{ color:#FFF; padding-left:20px; background:url(../images/icon_link.png) no-repeat 0 center}
+	
+	/*导航*/
+	#Hui-nav{ margin-left:200px; margin-right:100px}
+	#Hui-nav li,#Hui-nav li a{height:44px; line-height:44px}
+	.Hui-header span{display:block;float:right;height:100%;font-weight:bold;margin-top:5px;}
+	.Hui-header .loginout{border-color:#F00;color:#fff;padding:3px 30px;background:#f00}
+	.Hui-header .loginout:hover{border-color:#F00;color:#FFF;padding:3px 30px;background:#f00}
+	.Hui-nav-toggle{ display:none; position:absolute; top:0px; right:10px; width:44px; height:44px; background:#333 url(../images/hamburger.gif) no-repeat center}
+	.Hui-aside .menu_dropdown dl{ margin-bottom:0}
+	.Hui-aside .menu_dropdown dt{display:block;cursor:pointer;position:relative;height:38px;line-height:38px;cursor:pointer;color:#737373;font-size:13px;border-bottom:1px dotted #ccc;font-weight:100;padding-left:20px;}
+	.Hui-aside .menu_dropdown dt:hover{color:#000;background:#F9F9F9}	
+	.Hui-aside .menu_dropdown dt .menu_dropdown-arrow{ position:absolute;overflow: hidden; top:0; right:15px;transition-duration:0.3s ;transition-property:all}
+	.Hui-aside .menu_dropdown dd{ display:none}
+	.Hui-aside .menu_dropdown dt.selected .menu_dropdown-arrow{transform: rotate(180deg)}
+	.Hui-aside .menu_dropdown dd.selected{display:block; margin-left:0px}
+	.Hui-aside .menu_dropdown ul{padding:0px}
+	.Hui-aside .menu_dropdown li{line-height:35px;overflow:hidden;zoom:1;background:#FFF}
+	.Hui-aside .menu_dropdown li a{padding-left:15px; display:block;font-weight: 100; margin:0;background:#FFF}
+	.Hui-aside .menu_dropdown li a i{ font-weight: normal}
+	.Hui-aside .menu_dropdown dd ul{padding:0px 0px;}
+	.Hui-aside .menu_dropdown dl dd ul{background-color:#fbfbfb;-webkit-box-shadow:inset 0 4px 4px -2px rgba(0,0,0,.15),inset 0 -4px 4px -2px rgba(0,0,0,.15);-moz-box-shadow:inset 0 4px 4px -2px rgba(0,0,0,.15),inset 0 -4px 4px -2px rgba(0,0,0,.15);box-shadow:inset 0 4px 4px -2px rgba(0,0,0,.15),inset 0 -4px 4px -2px rgba(0,0,0,.15)}
+	.Hui-aside .menu_dropdown dd li{line-height:38px;}
+	.Hui-aside .menu_dropdown dd li a{line-height:38px;border-bottom:0px dashed #ccc;padding:0 0 0 40px;font-size:12px;color:#737373; border-bottom:1px solid #f3f3f3;border-left:3px solid #CCC}
+	.Hui-aside .menu_dropdown li a:hover{text-decoration:none;border-left:3px solid #FB3C4A;color:#000}
+	.Hui-aside .menu_dropdown li.current a,.menu_dropdown li.current a:hover{background-color:rgba(255,255,255,0.2)}
+	.Hui-aside .menu_dropdown  .menubg{background:url(../images/018.gif) repeat-y;background-position:20px}
+	.Hui-aside .menu_dropdown  .arrowline{background: url(../images/020.gif) no-repeat;background-position:20px}
+	.Hui-aside .menu_dropdown  .arrow019{background: url(../images/019.gif) no-repeat;background-position:20px;}
+	.Hui-aside .usercon{height:auto;border-bottom:#ccc 1px dotted;text-align:center}
+	.Hui-aside .usercon img{text-align:center;border-radius:50%;width:100px}
+
+	/*菜单收缩切换*/
+	.dislpayArrow{position: absolute;top: 0;bottom: 0;left:200px;width:0px; height:100%;z-index:10}
+	.dislpayArrow a{ position:absolute; display:block; width:17px; height:61px;top:50%; margin-top:-30px; background:url(../images/icon_arrow.png) no-repeat 0 0; outline:none}
+	.dislpayArrow a.open{ background-position:0 -61px}
+	.dislpayArrow a:hover{ text-decoration:none; background-position:right 0}
+	.dislpayArrow a.open:hover{background-position:right -61px}
+
+	/*选项卡导航*/
+	.Hui-tabNav{min-height: 48px;overflow:hidden; position:relative;}
+	.Hui-tabNav-wp{position:relative; height:40px;-moz-box-shadow: 0 3px 4px #CCC;-webkit-box-shadow: 0 3px 4px #CCC;box-shadow:0 3px 4px #CCC;}
+	.Hui-tabNav .acrossTab{ position:absolute; top:1px; left:10px;}
+	.Hui-tabNav .acrossTab .active{background:#fff;margin-left:1px;}
+	.Hui-tabNav .acrossTab li{background:#EAEDF4;border-right:1px solid #ccc;border-top:1px solid #ccc;border-bottom:1px solid #ccc;padding:0px 20px;margin-top:2px}
+	.acrossTab li em{background-image:none}
+	.loading {background:url(../images/loading_072.gif) no-repeat center; height:100px}
+	.show_iframe iframe {position: absolute;bottom: 0;height: 100%;width: 100%;top:0px;}
+	.Hui-tabNav-more {position: absolute;right:0px;width:70px;top:5px;display: none;z-index:99999}
+
+	/*面包屑导航*/
+	.breadcrumb{background-color:#F5F5F5;}
+
+	/*页脚
+		Name:			mod_footer
+		Level:			Global
+		Sample:			<footer class="footer"><p><a target="_blank" href="/feedback.html">意见反馈</a><cite>|</cite><a target="_blank" href="/about">关于XX</a><cite>|</cite><a target="_blank" href="/jobs.html">诚聘英才</a><br/>Copyright &copy;2012 guojunhui.com 郭俊辉版权所有 京ICP备10046298-4号</p></footer>
+		Explain:页脚
+		Last Modify:	jackying
+	*/
+	.footer{border-top:1px solid #E8E8E8;margin-top:20px;height:60px;font-family:tahoma,Arial;font-size:12px;color:#999;line-height:22px;text-align:center}
+	.footer p{padding-top:15px}
+	.footer a,.footer a:hover{color:#999}
+/*大屏幕*/
+@media (min-width: 1200px){
+  
+}
+/*横向平板*/
+@media (min-width: 768px) and (max-width: 979px){
+  
+}
+
+/*横向手机 竖向平板*/
+@media (max-width: 767px) {
+	html{ overflow-y:auto}	
+	#Hui-nav{margin-left:130px!important; margin-right:60px}
+	#Hui-nav li{width:24%;font-weight:bold;font-size:16px}
+	#Hui-nav li a{ display:block;}
+		.Hui-nav-toggle{ display:block}
+	.Hui-aside{ display:none;float:none; width:100%; height:auto; margin-top:0;padding-top:0;bottom:auto}
+	.big-page .Hui-aside{ left:0!important}
+	.Hui-subtitle,.dislpayArrow,.Hui-userbox,.Hui-tabNav{ display:none}
+		.menu_dropdown dt{line-height:44px}
+		.menu_dropdown li,.menu_dropdown dd li,.menu_dropdown dd li a{ line-height:44px;}
+  .Hui-tabNav{ position:fixed; z-index:998;}
+  .Hui-article-box{ position:static; left:0}
+  .Hui-article-box .pd-20{padding:20px 10px}
+		.Hui-article{left:0}
+		.Hui-container .bk-gray{ border:none}
+		.Hui-container .pd-10{ padding:0}
+}
+/*竖向手机*/
+@media (max-width: 480px) {
+	#Hui-nav{margin-left:50px!important;margin-right:60px}
+		.Hui-logo{ display:none}
+		.Hui-logo-m{ display:inline-block; padding-right:5px}
+		.Hui-subtitle,.dislpayArrow,.Hui-userbox{ display:none}
+  
+}
+
+/*==============以下是业务相关的样式====================*/
+/*权限*/
+.permission-list label{ display:inline-block; float:left;white-space:nowrap; padding:3px 10px;border:1px solid #ccc;margin:5px;font-size:10px;}
+.permission-list b.item{ width:50px}
+
+

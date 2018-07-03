@@ -1,0 +1,40 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+<form action="{:U(GROUP_NAME. '/Rbac/addUserHandle','','')}" method="post"> 
+<table class="table table-border table-bordered table-bg">  
+    <tr>
+		<td class="text-r va-t">用户账号</td>
+		<td><input name="username" type="text" class="input-text" value=""  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">用户密码</td>
+		<td><input name="password" type="password" class="input-text" value=""  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">所属角色</td>
+		<td><select name="role_id[]" class="select" style="width:200px;">    
+    <option value="">请选择角色</option>
+    <foreach name="role" item="v">
+    		<option value="{$v['id']}">{$v.name}({$v.remark})</option>
+    </foreach>
+    </select></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t"></td>
+		<td><input name="submit" type="submit" class="btn" value="保存添加"/></td>
+	</tr>
+	
+	</table>
+ </form>   
+    </div> 
+    
+    
+    </div>
+</body>
+</html>

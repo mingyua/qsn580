@@ -1,0 +1,135 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>{title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a onclick="comm_all_add('添加产品','{:U(GROUP_NAME.'/Product/add')}')" href="javascript:;"><i class="Hui-iconfont Hui-iconfont-add"></i>添加产品</a></span>
+<span class="topshadow bgdel"><a href="javascript:;" onClick="all_del(this,'{:U(GROUP_NAME.'/Product/delall')}')"><i class="Hui-iconfont Hui-iconfont-del2 "></i>批量删除</a></span>
+<span class="topshadow bgf5 right"><a href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont Hui-iconfont-huanyipi"></i></a></span>
+<span class="topright">
+<form class="Huiform f-l pr-20" method="post" action="{:U(GROUP_NAME. '/product/set')}" target="_self">出价次数：<input type="text" class="input-text" name="counts" value="{$set.counts}" style="width:150px;">
+<input type="submit" class="btn btn-success" id="" name="submit" value="保存">
+</form>
+<form method="get" action="{:U(GROUP_NAME.'/Product/index/')}" class="f-l"><input type="text" placeholder="请输入关键词" class="input-text ac_input" name="key" value="" id="key" autocomplete="off" style="width:300px"><button type="submit" class="btn btn-default" id="search_button">搜索</button></form></span>
+</div>
+<div class="admin">
+<div class="pd-20">
+	<table class="table table-border table-bordered table-bg table-hover table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="40">ID</th>
+				<th width="100">品牌</th>
+				<th width="60">产品图片</th>
+				<th >产品名称</th>
+				<th width="100">所属分类</th>
+				<th width="100">价格</th>
+				<th width="60">状态</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<foreach name='product' item='v'>
+			<tr class="text-c">
+				<td><input type="checkbox" value="{$v.id}" name="delall"></td>
+				<td>{$v.id}</td>
+				<td>{$v.pname}</td>
+				<td class="bigimg"><a href="javascript:;"><img width="30" class="product-thumb" src="{$site.site_url}{$v.image}"></a></td>
+				<td class="text-l"><a style="text-decoration:none" onClick="product_show('{$v.image}','product-show.html','10001')" href="javascript:;">{$v.title}</a></td>
+				<td class="text-l">{$v.cate}</td>
+				<td><span class="price">{$v.saleprice}</span>元</td>
+				<td class="comm-status">
+					<a style="text-decoration:none" onClick="<if condition='$v[status] eq 1'>comm_down<else/>comm_up</if>(this,'{$v.id}','{:U(GROUP_NAME.'/Product/status',array(id=>$v['id']))}','发布','下架')" href="javascript:;" title="<if condition='$v[status] eq 0'>
+					发布<else/>下架</if>" id="send">
+					<i class="<if condition='$v[status] eq 1'>Hui-iconfont Hui-iconfont-shenhe-tongguo c-success  f-18<else/>Hui-iconfont Hui-iconfont-shenhe-butongguo2 c-red f-18</if>"></i>
+					</a> 
+				</td>
+				<td class="comm-manage">
+				<a  class="edit"  onclick="comm_all_add('添加产品','{:U(GROUP_NAME.'/Product/edit',array(id=>$v['id']))})}')" href="javascript:;" title="编辑"><i class="Hui-iconfont Hui-iconfont-edit"></i>编辑</a>
+				
+				<a  class="del" onClick="comm_del(this,'{$v.id}','{:U(GROUP_NAME.'/Product/del',array(id=>$v['id']))}')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del2"></i>删除</a>
+				</td>
+			</tr>
+			</foreach>
+		</tbody>
+	</table>
+<div class="pagination cl mb-20">{$page}{$tip}</div><br><br>
+</div>
+</div>
+<br>
+
+</div>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.min.js"></script> 
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script type="text/javascript">
+$(function(){
+var imgWid = 0 ;
+var imgHei = 0 ; //变量初始化
+var big = 6;//放大倍数
+$(".bigimg a").hover(function(){
+	$(this).find("img").stop(true,true);
+	var imgWid2 = 0;var imgHei2 = 0;//局部变量
+	imgWid = $(this).find("img").width();
+	imgHei = $(this).find("img").height();
+	imgWid2 = imgWid * big;
+	imgHei2 = imgHei * big;
+	$(this).find("img").css({"z-index":2});
+	$(this).find("img").animate({"width":imgWid2,"height":imgHei2,"margin-left":-imgWid2/2,"margin-top":-imgHei2/2});
+},function(){$(this).find("img").stop().animate({"width":imgWid,"height":imgHei,"margin-left":-imgWid/2,"margin-top":-imgHei/2,"z-index":1});});
+})
+</script>
+<script>
+$(function(){
+	$("table").on('click','.tg-yes',function(){
+	var uid=$(this).attr('uid');
+	var uname=$(this).attr('uname');
+	var maxprice=$(this).attr('maxprice');
+	var id=$(this).attr('rel');
+	var zt=$(this).attr('data-status');
+	if(zt==1){
+	var cdiv="Hui-iconfont-del c-red f-20";
+		var title="未成交";
+	}else{
+	var cdiv="Hui-iconfont-xuanzhong c-primary f-20";
+		var title="成交";
+	}
+	var html=$(this);
+		$.ajax({
+			url:"__URL__/paystatus",
+			type:"POST",
+			data:{
+				id:id,
+				uid:uid,
+				uname:uname,
+				maxprice:maxprice,
+			},
+			success:function(msg){
+				if(msg==1){
+					html.html('<a title="'+title+'"><i class="Hui-iconfont '+cdiv+'"></i></a>');
+					layer.msg('成功!',{icon:1,time:1000});
+				}else{
+					layer.msg('失败!',{icon:5,time:1000});
+				}
+
+			},
+		
+		});
+	});
+});
+</script>
+
+<script type="text/javascript">
+$(function(){
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+</script>
+</body>
+</html>

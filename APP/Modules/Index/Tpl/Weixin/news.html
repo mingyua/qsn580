@@ -1,0 +1,42 @@
+<include file='_header'/>
+    <div class="page-group">
+    <div id="page-infinite-scroll-bottom" class="page">
+  <header class="bar bar-nav">
+    <a class="dyico  iconfont icon-bian pull-left back" > </a>
+    <h1 class="title">新闻动态</h1>
+  </header>
+  <div class="content" data-distance="600">
+    <div class="list-block">
+      <ul class="list-container">
+		<foreach name="lists" item="v">
+        <li class="item-content"><div class="item-inner"><div class="item-title"><a href="show/id/{$v.id}">{$v.title}</a></div></div></li>
+		</foreach>
+      </ul>
+    </div>
+	<p><a href="#" class="button button-fill more">加载更多...</a></p>
+  </div>
+<script>
+var itemsloads="8";
+var itemsnum={$counts};
+var ajaxurl="__URL__/ajaxdata";
+$(function(){
+	$('p').on('click','.more',function(){
+		var listnum = $('.list-container li').length;
+		if(listnum>=itemsnum){
+			alert("没有了");
+		}
+		$.post(ajaxurl,{'frist':listnum,'limitnum':itemsloads},function(data){
+			var json=$.parseJSON(data);
+			var html='';
+			$.each(json,function(index,value){
+				html+='<li class="item-content"><div class="item-inner"><div class="item-title"><a href="show/id/'+value.id+'">'+value.title+'</a></div></div></li>'
+			});	
+			//alert(listnum);
+		$('.list-container').append(html);						
+		});
+
+	});
+
+});
+</script>
+<include file='_footer'/>

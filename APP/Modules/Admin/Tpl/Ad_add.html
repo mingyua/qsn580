@@ -1,0 +1,97 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+
+<form  action="{:U(GROUP_NAME.'/ad/add')}" method="post" enctype="multipart/form-data">
+<table class="table table-border table-bordered table-bg table-hover table-sort">
+<tr>
+    <th class="text-r" width="100">分类选择</th>
+    <td>
+     <select class="input-text" name="kinds" style="width:200px">
+    <option value="">==请选择==</option>
+    <option value="广告">广告</option>
+    <option value="友情链接">友情链接</option>
+    </select>
+    </td>
+</tr>
+<tr>
+    <th class="text-r">标题</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="title" id="formGroupInputSmall" placeholder="">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">副标题</th>
+    <td>
+      <input class="input-text" style="width:500px"  name="name" type="text" id="formGroupInputSmall"  value="" />
+    </td>
+</tr>
+<tr>
+    <th class="text-r">链接地址</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="url" id="formGroupInputSmall" placeholder="">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">位置</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="pos" id="formGroupInputSmall" placeholder="">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">图片地址</td>
+    <td>
+		<table id="gallery-table" align="center">
+				  <tbody>
+				 <tr >
+					<td align="left" height="60">
+					<span class="btn-upload" style="float:left">
+			  <a style="z-index:2;" href="javascript:void();" class="btn-uploadpic">浏览</a>
+			  <input type="file" name="file"  id="imgong" onchange="preImg(this.id,'img1');" value="" class="input-file">
+			  </span><span class="ml-10" style="float:left;" ><img id="img1" src="" style="display: block;" height="60" /></span>
+				   </td>
+				  </tr>
+				</tbody>
+				</table>	
+
+	
+    </td>
+</tr>
+<tr>
+    <th class="text-r">图片描述</th>
+    <td>
+      <textarea  class="textarea" rows="5" cols="80"  name="contents"></textarea>
+    </td>
+</tr>
+<tr>
+    <th class="text-r">排序</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="sort" id="formGroupInputSmall" placeholder="100">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">是否显示</th>
+    <td>
+      <input type="radio" name="status" value="1" />显示
+      <input type="radio" name="status" value="0" />不显示
+    </td>
+</tr>
+<tr>
+    <th class="text-r"></th>
+    <td>
+       <button type="submit" name="submit" class="btn btn-primary">马上发布</button>
+       <button type="button" class="btn btn-primary">取消</button>
+    </td>
+</tr>
+</table>
+  </form> 
+	</div>
+	</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

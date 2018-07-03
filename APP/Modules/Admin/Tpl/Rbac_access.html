@@ -1,0 +1,81 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	$('input[level=1]').click(function (){
+		var inputs=$(this).parents('.app').find('input');
+		$(this).attr('checked') ? inputs.attr('checked','checked'):
+				inputs.removeAttr('checked');
+		});
+	$('input[level=2]').click(function (){
+		var inputs=$(this).parents('.dl').find('input');
+		$(this).attr('checked') ? inputs.attr('checked','checked'):
+				inputs.removeAttr('checked');
+		});
+		
+});
+</script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+<div class="pd-20">
+  <form class="Huiform" id="form-role-add" action="{:U('Admin/Rbac/access','','')}" method="post">
+    <table class="table table-border table-bordered table-bg">
+      <tbody>
+        <tr>
+          <th class="text-r" width="80">角色名称：</th>
+          <td><input name="oldpassword" type="text" class="input-text" id="" value="{$role['name']}" datatype="*1-20" nullmsg="角色名称不能为空！"> 
+          </td>
+        </tr>
+		<foreach name='node' item='app'>
+        <tr class="app">
+          <th class="text-r va-t">
+		  {$app.title}
+        <input type="checkbox" name="access[]" value="{$app.id}_1" level='1' <if condition='$app["access"]'>checked='checked'</if> />
+		  </th>
+          <td>
+            <table class="table table-border table-bordered table-bg">
+              <tbody>
+			  	<foreach name='app.child' item='action'>
+                <tr class="dl">
+                  <th width="100">{$action.title} <input type="checkbox" name="access[]" value="{$action.id}_2" level='2'<if condition='$action["access"]'>checked='checked'</if> /></th>
+                  <td class="permission-list">
+               
+                    <div class="cl">
+					 <foreach name='action.child' item='method'>
+                    <label class="item"><input type="checkbox" name="access[]" value="{$method.id}_3"  level='3' <if condition='$method["access"]'>checked='checked'</if> />     {$method.title}</label>
+					 </foreach>  
+                    </div>
+                  </td>
+                </tr>
+				 </foreach>  
+              </tbody>
+            </table>
+          </td>
+        </tr>
+		</foreach>    
+        <tr>
+          <th class="text-r va-t">描述：</th>
+          <td><textarea name="newpassword" class="textarea" id="newpassword" placeholder="描述下角色所具有的权限"></textarea> 
+          </td>
+        </tr>
+        
+        <tr>
+          <th></th>
+          <td>            
+			<input type="hidden" name="rid" value="{$rid}" />
+            <button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  </div>
+  </div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+
+</body>
+</html>
+ 

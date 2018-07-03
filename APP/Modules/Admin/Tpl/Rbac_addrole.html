@@ -1,0 +1,36 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+<form action="{:U(GROUP_NAME. '/Rbac/addrole','','')}" method="post">   
+ <table class="table table-border table-bordered table-bg">  
+    <tr>
+		<td class="text-r va-t">管理组名称</td>
+		<td><input name="name" type="text" class="input-text" value=""  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">管理组描述</td>
+		<td><input name="remark" type="text" class="input-text" value=""  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">是否开启</td>
+		<td>   
+		<input name="status" type="radio"  value="1" checked="checked" />&nbsp;&nbsp;开启
+		<input name="status" type="radio"  value="0"  />&nbsp;&nbsp;关闭<cite>
+		</td>
+	</tr>
+    <tr>
+		<td class="text-r va-t"></td>
+		<td><input name="submit" type="submit" class="btn" value="保存添加"/></td>
+	</tr>
+	
+	</table>
+ </form>   
+    </div> 
+    </div>
+</body>
+</html>

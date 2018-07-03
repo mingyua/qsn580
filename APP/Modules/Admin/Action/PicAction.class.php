@@ -1,0 +1,1 @@
+<?phpclass PicAction extends CommonAction {	Public function index() {	$this->display();	}	Public function delimg() {		$file=$_POST['file'];		if(unlink(".".$file)){ 		echo "1"; 		}else{ 		echo "0";  			}	}				}?>

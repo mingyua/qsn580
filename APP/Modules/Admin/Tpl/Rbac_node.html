@@ -1,0 +1,71 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a href="javascript:;"><i class="Hui-iconfont Hui-iconfont-manage"></i>节点列表</a></span>
+</div>
+<div class="admin">
+<div class="pd-20">
+    <table class="table table-border table-bordered table-bg">
+      <tbody>
+		<foreach name='node' item='app'>
+        <tr class="app">
+          <th class="text-c va-m f-16" width="100">{$app.title}<br>
+		  <a  onclick="comm_add('添加控制器','{:U(GROUP_NAME. '/Rbac/addNode',array('pid'=>$app['id'],'level'=>2))}')"  href="javascript:;" title="添加控制器"><i class="Hui-iconfont Hui-iconfont-add2"></i></a>
+		  
+		  <a onclick="comm_add('修改','{:U(GROUP_NAME. '/Rbac/addNode',array('id'=>$app['id']))}')"  href="javascript:;" title="修改"><i class="Hui-iconfont Hui-iconfont-edit ml-5 c-success"  alt="修改"></i></a>
+		  
+		  <a  onclick="comm_del('删除','{:U(GROUP_NAME. '/Rbac/delnode',array('id'=>$app['id']))}')" href="javascript:;" title="删除"> <i class="Hui-iconfont Hui-iconfont-del2 c-danger"></i></a>
+		  </th>
+          <td>
+            <table class="table table-border table-bordered table-bg">
+              <tbody>
+			  	<foreach name='app.child' item='action'>
+                <tr class="dl">
+                  <th width="200" class="text-c c-primary" >{$action.title} 
+				  <a onclick="comm_add('添加方法','{:U(GROUP_NAME. '/Rbac/addNode',array('pid'=>$action['id'],'level'=>3))}')"  href="javascript:;" title="添加方法"><i class="Hui-iconfont Hui-iconfont-add2"></i></a> 
+				  </th>
+                  <td class="permission-list">
+               
+                    <div class="cl">
+					 <foreach name='action.child' item='method'>
+                    <label>{$method.title}
+              <a onclick="comm_add('修改','{:U(GROUP_NAME. '/Rbac/addNode',array('id'=>$method['id']))}')"  href="javascript:;" class="tablelink"title="修改"><i class="Hui-iconfont Hui-iconfont-edit ml-5 c-success"  alt="修改"></i></a>   
+			  <a onclick="comm_del('删除','{:U(GROUP_NAME. '/Rbac/delnode',array('id'=>$method['id']))}')" href="javascript:;"   class="tablelink" title="删除"> <i class="Hui-iconfont Hui-iconfont-del2  c-danger"></i></a></label>
+					 </foreach>  
+                    </div>
+                  </td>
+                </tr>
+				 </foreach>  
+              </tbody>
+            </table>
+          </td>
+		   
+
+        </tr>
+		</foreach>    
+        <!--
+		<tr>
+          <th class="text-r va-t">描述：</th>
+          <td><textarea name="newpassword" class="textarea" id="newpassword" placeholder="描述下角色所具有的权限"></textarea> 
+          </td>
+        </tr>
+        -->
+        <tr>
+          <th></th>
+          <td>            <input type="hidden" name="rid" value="{$rid}" />
+
+            <button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+    </div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script type="text/javascript">
+		window.UEDITOR_HOME_URL='__ROOT__/Ueditor/';
+		window.onload=function(){
+ 			UE.getEditor('content',{
+				toolbars:[['FullScreen', 'Source', 'Undo', 'Redo','Bold','test','forecolor', 'fontfamily', 'fontsize',]],
+				initialFrameHeight:300,
+			});
+			}
+        </script>
+		<script src="__ROOT__/Ueditor/ueditor.config.js"></script>
+		<script src="__ROOT__/Ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.charfirst.pinyin.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/sort.js"></script> 
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a href="javascript:;"><i class="Hui-iconfont Hui-iconfont-manage"></i>邮件配置</a></span>
+</div>
+<div class="admin">
+<div class="pd-20">
+<div id="tab-system" class="HuiTab">
+	<div class="tabCon">
+		<form action="{:U(GROUP_NAME.'/email/edit')}" method="post">   
+		<table class="table table-border table-bordered table-hover table-bg">
+				<input name="id" type="hidden" value="{$email.id}">
+			<tr>
+			
+				<th class="text-r" width="100">字符编码</th>
+				<td width="500"><input name="charset" type="text" style="width:500px" class="input-text" value="{$email.charset}"  /><span class="pl-10 pr-10">UTF-8</span><span class="pl-10 pr-10">GBK2312</span></td>
+				<td rowspan="9" style="width:500px" >
+					<table>
+						<tr>
+							<th class="text-r" width="60">收件人地址</th>
+							<td>
+							<textarea name="to" id="address" class="address" style="width:460px;overflow-x:visible;overflow-y:visible;padding:5px 0 0 5px" onpropertychange='this.style.posHeight=this.scrollHeight' id=textarea onfocus='textarea.style.posHeight=this.scrollHeight'>{$email.to}</textarea>
+							<span class="pl-10">多个邮箱用“,”隔开。</span></td>
+						</tr>
+						<tr>
+							<th class="text-r" width="60">标题</th>
+							<td><input name="title" type="text" style="width:500px" class="input-text title" value="{$email.title}"  /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><textarea id="content"  name="contents" style="width:100%;" class="cont">{$email.contents}</textarea></td>
+						<tr>
+					</table>
+					</td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">开启认证</th>
+				<td><input name="smtpauth" type="text" style="width:500px" class="input-text" value="{$email.smtpauth}"  /><span class="pl-10 pr-10">true</span><span class="pl-10 pr-10">false</span></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">端口</th>
+				<td><input name="port" type="text" style="width:500px" class="input-text" value="{$email.port}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">邮箱SMTP服务器</th>
+				<td><input name="host" type="text" style="width:500px" class="input-text" value="{$email.host}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">邮箱登录帐号</th>
+				<td><input name="username" type="text" style="width:500px" class="input-text" value="{$email.username}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">邮箱密码</th>
+				<td><input name="password" type="text" style="width:500px" class="input-text" value="{$email.password}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">回复地址</th>
+				<td><input name="addreplyto" type="text" style="width:500px" class="input-text" value="{$email.addreplyto}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">回复名称（中文）</th>
+				<td><input name="addname" type="text" style="width:500px" class="input-text" value="{$email.addname}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">回复名称（英文）</th>
+				<td><input name="fromname" type="text" style="width:500px" class="input-text" value="{$email.fromname}"  /></td>
+			</tr>
+			<tr>
+			<th class="text-r" width="100">&nbsp;</th><td><input type="submit" class="btn" value="保存"/>&nbsp;&nbsp;<input name="reset" type="reset" class="btn" value="重置"/></td>
+			<td class="text-c"><div id="sendemail" class="btn btn-primary">发送邮件</div></td>	
+			</tr>
+	   </table>
+	   </form>
+	   <style>
+	   .lxrlist{position:absolute;top:100px;right:0;display:none;width:auto;height:auto;z-index:99999}
+	   .qm_left{position:absolute;background:#F5F6F9;width:20px;color:#000;text-align:center;padding:10px;right:0;top:100px;}
+	   .lxrlist .panel{width:220px}
+	   .lxrlist .panel-body{height:460px;overflow-y:scroll;}
+	   </style>
+	   	   <div class="qm_left">常<br>用<br>联<br>系<br>人</div>
+
+	   <div class="lxrlist">
+			<div class="panel panel-default f-l">
+				<div class="panel-header">常用联系人<i class="Hui-iconfont Hui-iconfont-close f-r c-red"></i> </div>
+				<div class="panel-body">
+					<ul class="sort_box">
+					<foreach name="user" item="v">
+						<li class="sort_list"><a rel="{$v.email}" class="num_name f-12"><B>{$v.username}</B>(<font color="#999">{$v.email}</font>)</a></li>
+				    </foreach>
+					</ul>
+				</div>
+			</div>	   
+	   </div>
+	</div>
+</div>
+<p class="msg"></p>
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script>
+$(function(){
+	$('.lxrlist').on('click','a',function(){
+	 var cmail=$(this).attr('rel');
+	 var addr=$('.address').val();
+	 if(cmail){
+		if(addr.match(cmail)){
+			layer.msg('已添加！',{icon:2,time:2000});
+		}else{
+		 $('.address').val(addr+","+cmail)
+		
+		}
+	 
+	 }else{
+			layer.msg('对不起，用户邮箱不存在，请添加！',{icon:2,time:2000});
+	 }
+		//alert(addr+cmail);
+	});
+
+	$(".qm_left").click(function(){ 
+				$(".qm_left").hide(); //当前按钮隐藏
+				$(".lxrlist").show();
+	});
+	$(".panel-header").click(function(){ 
+				$(".qm_left").show(); //当前按钮隐藏
+				$(".lxrlist").hide(); //向左移动
+	});
+
+});
+
+
+</script>
+<script type="text/javascript">
+$(function(){
+	$('#sendemail').click(function(){
+		var title=$('.title').val();
+		var address=$('.address').val();
+		var contents=UE.getEditor('content').getContent();
+		$.post("{:U(GROUP_NAME.'/email/sendmail')}",{'title':title,'address':address,'contents':contents},function(data){
+			$('.msg').html(data);		
+		});		
+	});
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+</script>
+</body>
+</html>

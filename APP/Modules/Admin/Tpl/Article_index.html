@@ -1,0 +1,81 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a onclick="comm_all_add('添加文章','{:U(GROUP_NAME.'/Article/add')}')" href="javascript:;"><i class="Hui-iconfont Hui-iconfont-add"></i>添加文章</a></span>
+<span class="topshadow bgdel"><a href="javascript:;" onClick="all_del(this,'{:U(GROUP_NAME.'/Article/delall')}')"><i class="Hui-iconfont Hui-iconfont-del2 "></i>批量删除</a></span>
+<span class="topshadow bgf5 right"><a href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont Hui-iconfont-huanyipi"></i></a></span>
+<span class="topright"><form method="get" action="{:U(GROUP_NAME.'/Article/index/')}"><input type="text" placeholder="请输入关键词" class="input-text ac_input" name="key" value="" id="key" autocomplete="off" style="width:300px"><button type="submit" class="btn btn-default" id="search_button">搜索</button></form></span>
+</div>
+<div class="admin">
+<div class="pd-20">
+<form method="post"> 
+  <table class="table table-border table-bordered table-bg table-hover table-sort">
+    <thead>
+      <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="40">ID</th>
+        <th>标题</th>
+        <th width="160">分类</th>
+        <th width="80">作者</th>
+        <th width="120">更新时间</th>
+        <th width="75">浏览次数</th>
+        <th width="60">发布状态</th>
+        <th width="140">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        <foreach name='article' item='v'>
+      <tr class="text-c">
+        <td><input type="checkbox" value="{$v.id}" name="delall"></td>
+        <td>{$v.id}</td>
+        
+        <td class="text-l"><u style="cursor:pointer" class="text-primary" onClick="article_edit('10001','650','','查看','article-zhang.html')" title="查看">{$v.title}</u>
+<!--		<foreach name='v.attr' item='value'>
+		<span class="pl-5" style="color:{$value.color}">[{$value.name}]</span>
+		
+		</foreach>
+		-->
+		</td>
+        <td>{$v.cate}</td>
+        <td>{$v.write}</td>
+        <td>{$v.time|date='Y-m-d H:i',###}</td>
+        <td>{$v.hits}</td>
+        <td class="comm-status">
+		<a style="text-decoration:none" onClick="<if condition='$v[status] eq 1'>comm_down<else/>comm_up</if>(this,'{$v.id}','{:U(GROUP_NAME.'/Article/status',array(id=>$v['id']))}','发布','下架')" href="javascript:;" title="<if condition='$v[status] eq 0'>
+        发布<else/>下架</if>" id="send">
+		<i class="<if condition='$v[status] eq 1'>Hui-iconfont Hui-iconfont-shenhe-tongguo c-success  f-18<else/>Hui-iconfont Hui-iconfont-shenhe-butongguo2 c-red f-18</if>"></i>
+		</a> 
+		</td>
+        <td class="f-14 comm-manage">		
+		<a class="edit" onclick="comm_all_edit('编辑文章','{:U(GROUP_NAME.'/Article/edit',array(id=>$v['id']))}')"  href="javascript:;" title="编辑" ><i class="Hui-iconfont Hui-iconfont-edit pr-5"></i>编辑</a> 
+		
+		<a class="del" onClick="comm_del(this,'{$v.id}','{:U(GROUP_NAME.'/Article/del',array(id=>$v['id']))}')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del2 pr-5"></i>删除</a>
+		</td>
+      </tr>
+        </foreach>
+    </tbody>
+  </table>
+</form>
+<div class="pagination">{$page}{$tip}</div>
+</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.min.js"></script> 
+
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+});
+</script>
+</body>
+</html>

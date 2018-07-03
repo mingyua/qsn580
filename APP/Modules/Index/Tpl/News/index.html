@@ -1,0 +1,40 @@
+<include file="Common:_header" />
+ </head>
+  <body>
+<include file="Common:_nav" />
+
+<section id="ad" class=" cl">
+<a ><img src="{$site.site_url}/{$pic.image}" width="100%"  class="box-shadow"></a>
+</section>
+<section id="content" class="container cl bg-white box-shadow">
+	<div class="row cl ">
+		<div id="commleft" class="col-2 f-l ">
+				<div class="main_box_inner_left">
+					<div  class="nav_title"><span  class="nav_sign">{$cname.name}</span><span  class="nav_more"></span></div>
+					<div class="nav_menu">
+						<ul>
+							<foreach name="sublist" item="v">
+							<li><a href="{$site.site_url}/{$v.url}" class='<if condition="$v.id eq $eqid">current<else /></if>'>{$v.name}</a></li>
+							</foreach>
+						</ul>
+					</div>
+				</div>
+			
+		</div>
+		<div class="col-10 f-l">
+		<h2 class="current_location_1">当前位置：<a href="{$site.site_url}">首页</a> &gt; <a href="{$site.site_url}/{$cname.url}">{$cname.name}</a> &gt; <a href="{$site.site_url}/{$subname.url}">{$subname.name}</a></h2>
+
+			<div class="content cl mr-30">
+					<ul class="newslist">
+				<foreach name="lists" item="v">
+					  <li><a href="{$site.site_url}/show-{$cid}-{$eqid}-{$v.id}.html" title="{$v.title}" alt="{$v.title}">{$v.title}</a><span class="date">{$v.time|date='Y-m-d',###}</span></li>
+				</foreach>
+					</ul>
+			</div>
+			<div class="pagination cl mb-20 mt-20">{$page}</div>
+
+		</div>
+	</div>
+</section>
+ 
+<include file="Common:_footer" />

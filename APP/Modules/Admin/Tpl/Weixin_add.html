@@ -1,0 +1,150 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script src="__PUBLIC__/js/common.js"></script>
+<script src="__PUBLIC__/lib/jquery.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/lib/color/css/jquery.cxcolor.css">
+
+<title>微信公众平台接口配置</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+<form action="{:U(GROUP_NAME.'/Weixin/edit')}" method="post" enctype="multipart/form-data">   
+<div id="tab-system" class="HuiTab">
+	<div class="tabBar cl"><span>基本参数</span><span>自定义菜单</span></div>
+		<div class="tabCon">
+
+<table class="table table-border table-bordered table-hover table-bg">
+    <tr>
+		<td colspan="2" class="f-14">接口参数</td>
+	</tr>
+
+    <tr>
+		<th class="text-r" width="100">appId</th>
+		<td><input name="appid" type="text" style="width:500px" class="input-text" value="{$wxapi['appid']}"  />&nbsp;&nbsp;微信公众号身份的唯一标识。审核通过后，在微信发送的邮件中查看</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">Appsecret</th>
+		<td><input name="appsecret" type="text" style="width:500px" class="input-text" value="{$wxapi['appsecret']}"  />&nbsp;&nbsp;&nbsp;审核后在公众平台开启开发模式后可查看</td>
+	</tr>
+    <tr>
+		<td colspan="2" class="f-14">支付参数</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">Mchid</th>
+		<td><input name="mchid" type="text" style="width:500px" class="input-text" value="{$wxapi['mchid']}" />&nbsp;&nbsp;受理商ID，身份标识</td>
+	</tr>
+    <tr>
+		<th class="text-r" width="100">Key</th>
+		<td><input name="key" type="text" style="width:500px" class="input-text" value="{$wxapi['key']}"  />&nbsp;&nbsp;商户支付密钥Key。审核通过后，在微信发送的邮件中查看</td>
+	</tr>
+
+		<input name="id" type="hidden"  value="{$wxapi['id']}" />
+		<input name="uid" type="hidden"  value="{$uid}" />
+    <tr><th class="text-r" width="100">&nbsp;</th><td><input name="submit" type="submit" class="btn" value="保存"/>&nbsp;&nbsp;<input name="reset" type="reset" class="btn" value="重置"/></td></tr></table>
+    </form>
+	</div>
+	<div class="tabCon">
+		<form action="{:U(GROUP_NAME.'/Weixin/addmenu')}" method="post">   
+		<div class="row cl">
+			<div class="col-6 mt-10">
+		<table class="table table-border table-bordered table-hover table-bg">
+			<tr>
+				<th class="text-r" width="100">上级菜单</th>
+				<td>
+				<select name="pid" class="input-text" style="width:250px">
+				<option value="0"></option>
+				<foreach name="wxmenu" item="v">
+						<option value="{$v['id']}">{$v.name}</option>
+				</foreach>
+				</select>&nbsp;&nbsp;留空为添加一级菜单
+</td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">自定义菜单名称</th>
+				<td><input name="name" type="text" style="width:250px" class="input-text" value="{$verify['v-length']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">菜单类型</th>
+				<td>
+				<select name="type" class="input-text" style="width:90px">
+				<option value="tree">二级</option>
+				<option value="view">链接</option>
+				<option value="click">点击</option>
+				</select>
+				<input name="key" type="text" style="width:155px" class="input-text" value="{$verify['']}"  /></td>
+			</tr>
+			<tr>
+				<th class="text-r" width="100">排序</th>
+				<td><input name="sort" type="text" style="width:250px" class="input-text" value="{$verify['v-length']}"  /></td>
+			</tr>		
+			<input name="uid" type="hidden"  value="{$uid}" />
+			<input name="time" type="hidden"  value="{$time}" />
+
+			<tr><th class="text-r" width="100">&nbsp;</th><td><input type="submit" class="btn" value="保存"/>&nbsp;&nbsp;<input name="reset" type="reset" class="btn" value="重置"/> <input name="sub" type="button" class="btn send" value="生成菜单"/></td></tr>
+			
+	   </table>
+	   <br>
+	<table class="table table-border table-bordered table-bg table-hover table-sort">    
+		 <thead>
+		  <tr class="text-c">
+			<th width="25"><input type="checkbox" name="" value=""></th>
+			<th>菜单名称</th>
+			<th width="80">菜单类型</th>
+			<th width="60">标识</th>
+			<th width="70">操作</th>
+		  </tr>
+		</thead>
+		
+		<tbody>
+		 <foreach name='cate' item='v'>
+		<tr  class="text-l">
+		<td><input type="checkbox" value="" name=""></td>
+		<td>{$v.html}{$v.name}</p></td>
+		<td><if condition="$v['pid'] eq '0'"><font color='red'><b>主菜单</b></font><else/>二级</if></td>
+		<td>{$v.key}</td>
+		<td></td>
+		</tr>
+		</foreach>    
+		
+		</tbody>
+		
+		</table>
+    </form>
+	   </div>
+	   <div class="col-6">
+			<div class="space iphone5">
+					<div class="time clearfix"><?php echo date('H:i',time())?></div>
+					<iframe src="{:U(GROUP_NAME.'/Weixin/phone')}" id="iphone5"></iframe>
+					<p>iPhone 5/5c/5s 响应式布局测试 (宽: 320px)</p>
+				</div>
+	   </div>
+	   </form>
+	   <div class="msg"></div>
+	</div>
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script>
+$(function(){
+	$('.send').click(function(){
+		$.post('__URL__/send',function(data){
+			$('.msg').html(data);
+			//alert(data);
+		});
+	
+	});
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+</script>
+</body>
+</html>

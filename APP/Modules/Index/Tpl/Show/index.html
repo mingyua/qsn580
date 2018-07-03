@@ -1,0 +1,179 @@
+<include file="Common:_header" />
+ </head>
+  <body>
+    <div class="page-group">
+        <div class="page page-current">
+  <header class="bar bar-nav">
+    <a class="button button-link button-nav pull-left back " href="#" > <span class="iconleft">返回</span></a>
+    <h1 class="title">产品详情页面</h1>
+  </header>
+<div class="content mb-40">
+<div class="list-block mg0 cl">
+	   <div class="swiper-container1 mb-10 pb0">
+			<div class="swiper-wrapper">
+				<foreach name="img" item="img">
+				<div class="swiper-slide"><img src="{$site.site_url}{$img.image}"></div>
+				</foreach>
+			</div>
+		</div>
+</div>
+<div class="list-block mg0 ">
+    <ul>
+      <li>
+		<div class="row">
+			<div class="col-75 pb-20 pr-20 pl-10 border-right">
+			<p>{$v.title}</p>
+			<p class="spinner">￥<span class="c-red sys_item_price">{$v.saleprice}</span> <span class="f-r"><button class="decrease f-l">-</button><input type="text" value="1" class="f-l num" style="border:1px solid #ccc;width:30px;height:25px;font-size:16px;"><button class="increase f-l">+</button> </span></p>
+			</div>
+			<div class="col-25 pt-20 pb-20  text-c"><p class=""><img src="__PUBLIC__/img/clt.png"></p><p>收藏</p></div>
+		</div>
+		
+      </li>
+    </ul>
+</div>
+
+
+<div class="list-block media-list mt-10 mb-10">
+        <ul>
+          <li class="item-content sys_item_spec">
+            <div class="item-media">
+             颜色
+            </div>
+            <div class="item-inner clearfix iteminfo_parameter sys_item_specpara" data-sid="1">
+				<ul class="sys_spec_img">
+					<li data-aid="白色"><a href="javascript:;" title="白色"><img src="__PUBLIC__/img/1.png" alt="白色" /></a><i></i></li>
+					<li data-aid="粉色"><a href="javascript:;" title="粉色"><img src="__PUBLIC__/img/2.png" alt="粉色" /></a><i></i></li>
+					<li data-aid="蓝色"><a href="javascript:;" title="蓝色"><img src="__PUBLIC__/img/3.png" alt="蓝色" /></a><i></i></li>
+					<li data-aid="绿色"><a href="javascript:;" title="绿色"><img src="__PUBLIC__/img/4.png" alt="绿色" /></a><i></i></li>
+					<li data-aid="黄色"><a href="javascript:;" title="黄色"><img src="__PUBLIC__/img/5.png" alt="黄色" /></a><i></i></li>
+					<li data-aid="灰色"><a href="javascript:;" title="灰色"><img src="__PUBLIC__/img/6.png" alt="灰色" /></a><i></i></li>
+				</ul>            
+			</div>
+          </li>
+          <li class="item-content sys_item_spec">
+            <div class="item-media">尺码</div>
+            <div class="item-inner clearfix iteminfo_parameter sys_item_specpara" data-sid="2">
+				<ul class="sys_spec_text">
+					<li data-aid="S"><a href="javascript:;" title="S">S</a><i></i></li>
+					<li data-aid="M"><a href="javascript:;" title="M">M</a><i></i></li>
+					<li data-aid="L"><a href="javascript:;" title="L">L</a><i></i></li>
+					<li data-aid="XL"><a href="javascript:;" title="XL">XL</a><i></i></li>
+				</ul>
+			</div>
+          </li>
+        </ul>
+</div>
+
+<div class="list-block mt-10 mb0">
+    <ul>
+      <li class="item-content item-link">
+        <div class="item-media"><i class="icon icon-f7"></i></div>
+        <div class="item-inner">
+          <div class="item-title"><b class="c-red">7</b>天无理由退换货</div>
+          <div class="item-after"></div>
+        </div>
+      </li>
+    </ul>
+</div>
+
+
+ <div class="buttons-tab mt-10">
+    <a href="#tab1" class="tab-link active button">商品详情</a>
+    <a href="#tab2" class="tab-link button">评论</a>
+  </div>
+  <div class="content-block pd0 mg0">
+    <div class="tabs">
+      <div id="tab1" class="tab active"  >
+        <div class="content-block mt-5" >
+          <p>{$v.contents}</p>
+        </div>
+      </div>
+      <div id="tab2" class="tab mg0">
+        <div class="content-block mt-5">
+          <p>{$v.contents}</p>
+        </div>
+      </div>
+    </div>
+  </div>		
+
+  
+
+
+  
+  </div>
+<div class= "bar bar-tab" style="height:auto">
+ <div class="row pb-10">
+      <div class="col-50"><a href="#" id="addcart" class="button button-big button-fill button-danger">加入购物车</a></div>
+      <div class="col-50"><a href="{:U(GROUP_NAME.'/cart/')}" class="button button-big button-fill button-success">立即购买</a></div>
+    </div>
+</div>
+        </div>
+    </div>
+
+<include file="Common:_footer" />
+<script>
+$(function(){
+	$('#addcart').click(function(){
+	var cpid={$v.id};
+	var price=$('.sys_item_price').html();
+	var num=$('.num').val();
+	var color=$('.sys_spec_img .selected').attr('data-aid');
+	var size=$('.sys_spec_text .selected').attr('data-aid');
+	if(!color){
+		alert('请选择颜色！');
+	}else if(!size){
+		alert('请选择尺码！');
+	}else{
+	alert('商品ID:'+cpid+'\n商品价格：'+price+"\n数量："+num+"\n颜色："+color+"\n尺码："+size);
+	
+	}
+	
+		
+	});
+});
+</script>
+
+<script>
+
+//商品规格选择
+$(function(){
+	$(".sys_item_spec .sys_item_specpara").each(function(){
+		var i=$(this);
+		var p=i.find(".item-inner>ul>li");
+		p.click(function(){
+			if(!!$(this).hasClass("selected")){
+				$(this).removeClass("selected");
+				i.removeAttr("data-attrval");
+			}else{
+				$(this).addClass("selected").siblings("li").removeClass("selected");
+				i.attr("data-attrval",$(this).attr("data-aid"))
+			}
+		})
+	})
+});
+//获取对应属性的价格
+
+</script>
+   <script>
+   $(function(){
+			$('.decrease').click(function(){
+			var num=$('.num').val();
+			if(num>1){
+				var shu=Number($('.num').val())-1;
+				$('.num').val(shu);
+				}				
+			});
+		$('.increase').click(function(){
+			var shu=Number($('.num').val())+1;
+			$('.num').val(shu);
+		});
+   });
+    </script>
+   
+    <script>
+  
+    var swiper = new Swiper('.swiper-container1', {
+        pagination: '.swiper-pagination1',
+        paginationClickable: true
+    });
+    </script>

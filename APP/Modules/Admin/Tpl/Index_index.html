@@ -1,0 +1,84 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>{$site.site_title}</title>
+<meta name="keywords" content="{$site.keywords}">
+<meta name="description" content="{$site.description}">
+</head>
+<body>
+<header class="Hui-header cl"> 
+<a class="Hui-logo l" title="{$site.site_title}" href="#"><img src="__PUBLIC__/images/user.png" height="30" ></a>
+
+<span class="mr-20 ml-5 "><a class="btn loginout" href="{:U('Index/logout')}" title="退出" > <i class="icon-eye-close"></i>退出</a></span>
+<input type="button" id="button" class="btn btn-secondary f-r mt-5 ml-5" value="清除缓存">
+<span><a class="btn btn-primary" href="{$site.site_url}" title="前台主页" target="_blank"><i class="icon-desktop"></i> 前台主页</a></span>
+</header>
+
+<aside class="hui-left">
+<div class="Hui-aside">
+<div class="usercon">
+	<div class=""><a title="头像上传" href="javascript:;" onclick="comm_edit('头像上传','{:U('Index/avater')}','id','700','534')" style="text-decoration:none"><img src="__ROOT__/{$k['images']}"></a></div>
+	<p>{$_SESSION['username']}</p>
+</div>
+<input runat="server" id="divScrollValue" type="hidden" value="" />
+<div class="menu_dropdown bk_2">
+	<volist name="node" id="vo">
+      <dl id="menu-user">
+        <dt><i class="{$vo.ico}"></i> {$vo.title}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dd>
+          <ul>
+			 <volist name="vo['node']" id="sub">
+           <li class="arrowline"><a _href="__APP__/{$vo.name}/{$sub.name}"  class="menubg"  style=" display:<if condition='$sub["enable"] eq 0'>none<else/>block</if> ">{$sub.title}</a></li>
+			</volist>
+          </ul>
+        </dd>
+      </dl>
+   </volist>  	
+
+    </div>
+ 
+</div>
+  </aside>
+<div class="dislpayArrow"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<section class="Hui-article-box">
+  <div id="Hui-tabNav" class="Hui-tabNav">
+    <div class="Hui-tabNav-wp">
+      <ul id="min_title_list" class="acrossTab cl">
+        <li class="active"><span title="我的桌面" data-href="{:U('Index/welcome')}">我的桌面</span><em></em></li>
+      </ul>
+    </div>
+    <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont Hui-iconfont-arrow2-left"></i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont Hui-iconfont-arrow2-right"></i></a></div>
+  </div>
+  <div id="iframe_box" class="Hui-article">
+    <div class="show_iframe">
+      <div style="display:none" class="loading"></div>
+      <iframe scrolling="yes" frameborder="0" src="{:U('Index/welcome')}"></iframe>
+    </div>
+  </div>
+</section>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("#button").click(function(){
+			$.post("{:U('/Cache/cache_clean')}",function(data){
+				$('.show_iframe').hide();
+				var href="{:U('/Cache/cache')}";
+				$('#iframe_box').append('<div class="show_iframe pd-20">'+data+'</div>');
+			});
+			
+	});
+	
+});
+
+</script>
+
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script>
+$(function(){
+	$('.menu_dropdown').on('click','li',function(msg){
+		$(this).addClass('arrow019').siblings().removeClass('arrow019');
+	});
+});
+
+</script>
+
+</body>
+</html>

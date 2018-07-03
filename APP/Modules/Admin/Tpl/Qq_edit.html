@@ -1,0 +1,40 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+<form action="{:U(GROUP_NAME. '/qq/edit','','')}" method="post"> 
+<table class="table table-border table-bordered table-bg">  
+    <tr>
+		<td class="text-r va-t">客服名称</td>
+		<td><input name="title" type="text" class="input-text" value="{$qq.title}"  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">qq号码</td>
+		<td><input name="qq" type="text" class="input-text" value="{$qq.qq}"  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">提示信息</td>
+		<td><input name="keys" type="text" class="input-text" value="{$qq.keys}"  style="width:500px;"/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">排序</td>
+		<td><input name="sort" type="text" class="input-text" value="{$qq.sort}"  style="width:500px;"/></td>
+	</tr>
+    <tr>
+	<input name="id" type="hidden" class="input-text" value="{$qq.id}"  style="width:500px;"/>	
+	<td class="text-r va-t"></td>
+		<td><input name="submit" type="submit" class="btn" value="保存添加"/></td>
+	</tr>
+	
+	</table>
+ </form>   
+    </div> 
+    
+    
+    </div>
+</body>
+</html>

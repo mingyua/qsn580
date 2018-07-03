@@ -1,0 +1,33 @@
+<include file="Common:_header" />
+ </head>
+  <body>
+<include file="Common:_nav" />
+
+<section id="ad" class=" cl">
+<a  target="_blank"><img src="{$pic.image}" width="100%"  class="box-shadow"></a>
+</section>
+<section id="content" class="container cl bg-white box-shadow">
+	<div class="row cl ">
+		<div id="commleft" class="col-2 f-l ">
+				<div class="main_box_inner_left">
+					<div  class="nav_title"><span  class="nav_sign">{$cname.name}</span><span  class="nav_more"></span></div>
+					<div class="nav_menu">
+						<ul>
+							<foreach name="sublist" item="v">
+							<li><a href="{$site.site_url}/{$v.url}" class='<if condition="($v.id eq $eqid) or ($v.id eq $sid)">current<else /></if>'>{$v.name}</a></li>
+							</foreach>
+						</ul>
+					</div>
+				</div>
+			
+		</div>
+		<div class="col-10 f-l">
+		<h2 class="current_location_1">当前位置：<a href="{$site.site_url}">首页</a> &gt; <a href="{$cname.url}">{$cname.name}</a> &gt; <a href="#">{$subname.name}</a></h2>
+
+			<div  class="content mr-30">{$single.contents} </div>
+
+		</div>
+	</div>
+</section>
+ 
+<include file="Common:_footer" />

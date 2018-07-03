@@ -1,0 +1,67 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>基本设置</title>
+</head>
+<body>
+<span class="ml-20 topshadow bgadd pos-r"><a href="javascript:;" onclick="javascript:createDir();"><i class="Hui-iconfont Hui-iconfont-add"></i>创建文件夹</a></span>
+<span class="topshadow bgadd pos-r"><a href="javascript:;" onclick="javascript:creatfile();"><i class="Hui-iconfont Hui-iconfont-add"></i>创建文件</a></span>
+<div class="admin">
+<div class="pd-20 text-c">
+  <div class="article-class-list cl">
+	<section class="container">
+		<table class="table table-border table-bordered">
+		  <thead class="text-l">
+			<tr>
+				<th>名称</th>
+				<th>修改时间</th>
+				<th>大小</th>
+				<th>操作</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  <foreach name="arr" item="v">
+			<tr>
+			  <td><img src="__PUBLIC__/images/{$v.image}.png" height="20">{$v.name}</td>
+			  <td>{$v.filetime}</td>
+			  <td>{$v.filesize}</td>
+			  <td>{$v.url}</td>
+			</tr>
+			</foreach>
+		  </tbody>
+		</table>
+	</section>  
+</div>
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script>
+//重命名文件夹
+function filerename(oldname)
+{
+	var path="{$mu}";
+	var newname = prompt('文件夹“'+oldname+'”将重命名为：',oldname);
+	if(newname)
+	{
+		location.href = '__URL__/filelist?m=weixin&c=filelist&a=resetname&path='+path+'&oldname='+oldname+'&newname='+newname;
+	}
+}
+function createDir()
+{
+	var path="{$mu}";
+	var newname = prompt('文件夹名为：','');
+	if(newname)
+	{
+		location.href = '__URL__/filelist?m=weixin&c=filelist&a=createDir&path='+path+'&newname='+newname;
+	}
+}
+function creatfile()
+{
+	var path="{$mu}";
+	var newname = prompt('文件名为：','');
+	if(newname)
+	{
+		location.href = '__URL__/filelist?m=weixin&c=filelist&a=creatfile&path='+path+'&newname='+newname;
+	}
+}
+</script>
+</body>
+</html>

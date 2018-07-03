@@ -1,0 +1,101 @@
+<include file="Common:_header" />
+ </head>
+  <body>
+<include file="Common:_nav" />
+
+<section id="ad" class=" cl">
+<a  target="_blank"><img src="{$pic.image}" width="100%"  class="box-shadow"></a>
+</section>
+<section id="content" class="container cl bg-white box-shadow">
+	<div class="row cl ">
+		<div id="commleft" class="col-2 f-l ">
+				<div class="main_box_inner_left">
+					<div  class="nav_title"><span  class="nav_sign">{$cname.name}</span><span  class="nav_more"></span></div>
+					<div class="nav_menu">
+						<ul>
+							<foreach name="sublist" item="v">
+							<li><a href="{$site.site_url}/{$v.url}" class='<if condition="$v.id eq $eqid">current<else /></if>'>{$v.name}</a></li>
+							</foreach>
+						</ul>
+					</div>
+				</div>
+			
+		</div>
+		<div class="col-10 f-l">
+		<h2 class="current_location_1">当前位置：<a href="{$site.site_url}">首页</a> &gt; <a href="{$cname.url}">{$cname.name}</a> &gt; <a href="{$subname.url}">{$subname.name}</a></h2>
+		<div class="col-9 f-l">
+			<div class="articleinfor">
+			<h1>{$detail.title}</h1>
+			<div class="info">
+			发布日期：{$detail.time|date='Y-m-d',###}&nbsp;&nbsp;
+
+			作者：<span id="clicks">{$detail.write}</span>&nbsp;&nbsp;&nbsp;&nbsp;字号：[&nbsp;<a href="javascript:FontZoom('16px','Content')">大</a> <a href="javascript:FontZoom('14px','Content')">中</a>  <a href="javascript:FontZoom('12px','Content')">小</a>]
+			</div>
+			
+			</div>
+
+			<div class="content" id="Content">
+			{$detail.contents} 
+			</div>
+			<div class="updownpage mb-20">
+				<ul>
+				<li>上一篇：<if condition="$upend">{$upend}<else/><a href="show-{$cid}-{$eqid}-{$upid}.html">{$up}</a></if></li>
+				<li>下一篇：<if condition="$downend">{$downend}<else/><a href="show-{$cid}-{$eqid}-{$downid}.html">{$down}</a></if></li>
+				</ul>
+			</div>
+		</div>
+
+			<div id="subright" class="col-3 f-l ">
+				<div class="panel panel-default">
+					<div class="panel-header">相关阅读</div>
+					<div class="panel-body">
+						<ul>
+							<foreach name="read" item="v">
+							<li><a href="show-{$cid}-{$v.kinds}-{$v.id}.html">{$v.title}</a></li>
+							</foreach>
+						</ul>
+					
+					</div>
+				</div>
+				
+				<div class="panel panel-default mt-10">
+					<div class="panel-header">新闻资讯</div>
+					<div class="panel-body">
+						<ul>
+							<foreach name="news" item="v">
+							<li><a href="show-5-{$v.kinds}-{$v.id}.html">{$v.title}</a></li>
+							</foreach>
+						</ul>
+					
+					</div>
+				</div>
+
+				<div class="panel panel-default mt-10 mb-20">
+					<div class="panel-header">疑问解答</div>
+					<div class="panel-body">
+						<ul>
+							<foreach name="question" item="v">
+							<li><a href="show-6-{$v.kinds}-{$v.id}.html">{$v.title}</a></li>
+							</foreach>
+						</ul>
+					
+					</div>
+				</div>
+
+			</div>
+						
+			
+		</div>
+	</div>
+</section>
+ 
+<include file="Common:_footer" />
+<script>
+function FontZoom(Size,Id)
+ {
+   var Obj=document.getElementById(Id);
+   Obj.style.fontSize=Size; 
+   Obj.style.lineHeight="180%"; 
+ }
+
+</script>

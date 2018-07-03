@@ -1,0 +1,72 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+  <div class="text-c">
+    <form class="Huiform" method="post" action="{:U(GROUP_NAME. '/Order/payset')}" target="_self">
+      <span class="select-box" style="width:150px;">
+      <select class="select" name="kinds" size="1">
+                   <foreach name="cate" item="v">
+                    <option value="{$v.id}">{$v.html}{$v.name}</option>
+                    </foreach>
+      </select>
+      </span>
+      <input type="text" placeholder="名称" name="remark" autocomplete="off" value="" class="input-text" style=" width:150px">
+      <input type="text" placeholder="字段" name="type" autocomplete="off" value="" class="input-text" style=" width:150px">
+      <input type="text" placeholder="值" name="values" autocomplete="off" value="" class="input-text" style=" width:150px">
+      <input type="text" placeholder="排序" name="sort" autocomplete="off" value="" class="input-text" style=" width:150px">
+      <span class="select-box" style="width:150px;">
+      <select class="select" name="enable" size="1">
+				<option value="0">否</option>
+				<option value="1">是</option>
+      </select>
+      </span>
+      <input type="submit" class="btn btn-success" id="" name="submit" value="添加">
+    </form>
+  </div>
+  <div class="cl pd-5 bg-1 bk-gray mb-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont Hui-iconfont-del2"></i> 批量删除</a></span> </div>
+  <table class="table table-border table-bordered table-bg">
+    <thead>
+      <tr>
+        <th scope="col" colspan="9">API接口配置</th>
+      </tr>
+      <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="150">名称</th>
+        <th width="100">字段</th>
+        <th>值</th>
+        <th>类型</th>
+        <th>排序</th>
+        <th>是否显示</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        <foreach name='Pay' item='v'>
+      <tr class="text-c">
+        <td><input type="checkbox" value="1" name=""></td>
+        <td>{$v.remark}</td>
+        <td>{$v.type}</td>
+		<td>{$v.values}</td>
+        <td><if condition='$v["kinds"] eq 1'>支付宝<elseif condition='$v["kinds"] eq 2'/>QQ<else/></if></td>
+        <td>{$v.sort}</td>
+		<td><if condition='$v["enable"] eq 0'>否<elseif condition='$v["enable"] eq 1'/>是<else/></if></td>
+		<td class="f-14 admin-manage">
+		<a title="编辑" href="javascript:;" onclick="comm_edit('接口编辑','{:U(GROUP_NAME.'/Order/edit',array('id'=>$v['id']))}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont Hui-iconfont-edit"></i></a>
+		<a title="删除" onClick="Order_del(this,'{$v.id}','{:U(GROUP_NAME.'/Order/del',array(id=>$v['id']))})}')" href="javascript:;" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont Hui-iconfont-del2"></i></a></td>
+      </tr>
+        </foreach>
+
+	  </tbody>
+  </table>
+  	 </form>
+
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>
+ 

@@ -1,0 +1,31 @@
+<script type="text/javascript" src="__PUBLIC__/lib/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/H-ui.admin.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/H-ui.admin.doc.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/icheck/jquery.icheck.min.js"></script> 
+<script src="__PUBLIC__/lib/date/js/moment.min.js"></script>
+<script src="__PUBLIC__/lib/date/js/moment.zh-cn.js"></script>
+<script src="__PUBLIC__/lib/date/js/ion.calendar.min.js"></script>
+<script>
+$(function(){
+	$('.date').each(function(){
+		$(this).ionDatePicker({
+			lang: 'zh-cn',
+			format: 'YYYY-MM-DD HH:00'
+		});
+	});
+	$('.date-y').each(function(){
+		$(this).ionDatePicker({
+			lang: 'zh-cn',
+			format: 'YYYY-MM-DD HH:00'
+		});
+	});
+	$('.date-ymd').each(function(){
+		$(this).ionDatePicker({
+			lang: 'zh-cn',
+			format: 'YYYY-MM-DD'
+		});
+	});
+});
+</script>

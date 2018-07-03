@@ -1,0 +1,114 @@
+<section id="share" class="container cl mt-10" >
+	<div class="panel panel-primary" >
+		<div class="panel-body ">
+			<div class="f-18 cl">
+			<b class="f-l">友情链接：</b>
+				<div class="jiathis_style_24x24 Hui-share cl">
+					<a class="jiathis_button_weixin Hui-iconfont">&#xe694;</a>
+					<a class="jiathis_button_cqq Hui-iconfont">&#xe67b;</a>
+					<a class="jiathis_button_tqq Hui-iconfont">&#xe6d9;</a>
+					<a class="jiathis_button_tsina Hui-iconfont">&#xe6da;</a>
+					<a class="jiathis_button_qzone Hui-iconfont">&#xe6c8;</a>
+					<a class="jiathis_button_douban Hui-iconfont">&#xe67c;</a>
+					<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis Hui-iconfont" target="_blank">&#xe715;</a>
+					<a class="jiathis_counter_style"></a>
+				</div>
+			</div>
+			<p class="links">
+			<foreach name="yq" item="v">
+				<a href="{$v.url}" alt="{$v.title}" title="{$v.title}" target="_blank">{$v.name}</a>
+			</foreach>
+			</p>
+			<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+		</div>
+	</div>		
+</section>
+	<div class="navbar navbar-blue mt-10">
+		<div class="container cl">
+			<div class="footnav">
+				<a href="{$site.site_url}/about-6-40.html">招生简章</a>
+				<a href="{$site.site_url}/about-6-42.html">入学须知</a>
+				<a href="{$site.site_url}/about-1-21.html">关于我们</a>
+				<a href="{$site.site_url}/about-7-46.html" >联络方式 </a>
+				<a href="{$site.site_url}/about-7-48.html">交通地图</a>
+			</div>
+		</div>
+	</div>
+
+<footer class="footer cl">
+
+	<div class="container text-c">
+		<p>{$site.site_foot}</p>
+		<p>{$site.site_count}</p>
+	</div>
+</footer>
+
+<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/laypage/1.2/laypage.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/bootstrap-Switch/bootstrapSwitch.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/Validform/5.3.2/passwordStrength-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/H-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.fixed.1.5.1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/gotop.js"></script>
+<script language="javascript">
+$(function(){
+	$('.on').click(function(){
+		$(".boxgz").toggle();
+	});
+	
+	$("#fixedBox").fix({
+		position 		: "{$set.pos}",	
+		horizontal  	: 0,		
+		vertical    	: {$set.mtop},		
+		halfTop     	: false,	
+		minStatue 		: {$set.min},	
+		hideCloseBtn 	: false,	
+		skin 			: "{$set.skin}",	
+		showBtnWidth 	: "{$set.btnwidth}",       
+		contentBoxWidth : "{$set.boxwidth}", 		
+		durationTime 	: "{$set.speed}"		
+	});
+	
+});
+</script>
+<div class="fixed_box" id="fixedBox">
+    <div class="content_box">
+        <div class="content_inner">
+        	<div class="close_btn"><a title="关闭"><span>关闭</span></a></div>
+            <div class="content_title"><span>客服中心</span></div>
+            <div class="content_list">            	
+                <div class="qqserver">
+				<foreach name="qq" item="v">
+                    <p>                              
+                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$v.qq}&amp;site=qq&amp;menu=yes">
+                          <img border="0" src="http://wpa.qq.com/pa?p=2:800015936:41" alt="{$v.keys}" title="{$v.keys}">
+                          <span>{$v.title}</span>
+                    	</a>
+                    </p>
+				</foreach>
+                </div>               
+                <hr>
+                <div class="phoneserver">
+                    <h5>客户服务热线</h5>
+                    <p>{$site.site_tel}</p>
+                    <p style="min-height:140px">{$weixin}</p>
+                </div>
+            </div>
+            <div class="content_bottom"></div>
+        </div>
+    </div>
+    <div class="show_btn"><span>展开客服</span></div>
+</div>
+
+<div style="display: none;" id="rocket-to-top">
+<div style="opacity:0;display: block;" class="level-2"></div>
+<div class="level-3"></div>
+</div>
+
+</body>
+</html>

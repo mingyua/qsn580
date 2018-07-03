@@ -1,0 +1,205 @@
+<include file="Common:header" />
+	
+	<div class="mui-content mb-15">
+		<!--slider start-->
+		<div class="mui-slider">
+		  <div class="mui-slider-group">
+		  	<volist name="slist" id="v">
+		    <div class="mui-slider-item"><a href="#"><img src="{$v}" height="180" /></a></div>
+		   </volist>
+		  </div>
+		</div>	
+		<!--slider end-->
+		
+	</div>
+		<h1 class="titlebar">
+			<a href="{:U('index/about')}" class="my-title-l">学校简介</a>
+			<a href="{:U('index/about')}" class="my-title-r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;School Profile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>			
+		</h1>	
+	<div class="mui-content-padded c-main" style="margin: 10px;">
+		{$about.description}
+	</div>
+	<br>
+
+		<h1 class="titlebar">
+			<a href="{:U('index/news',array('kinds'=>3))}" class="my-title-l">校园环境</a>
+			<a href="{:U('index/news',array('kinds'=>3))}" class="my-title-r">&nbsp;Campus Environment</a>			
+		</h1>
+	<p class="mui-content-padded c-main">
+		<div class="picMarquee-left">
+			<div class="bd">
+				<ul class="picList">
+		  		<volist name="evment" id="v">
+					<li>
+						<div class="pic"><a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}" target="_self"><img src="{$v.pic}" /></a></div>
+						<div class="title"><a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}" target="_self">{$v.title}</a></div>
+					</li>		    
+		   		</volist>
+					
+				</ul>
+			</div>
+		</div>
+
+	</p>
+	<br>
+
+		<h1 class="titlebar">
+			<a href="{:U('index/course')}" class="my-title-l">相关课程</a>
+			<a href="{:U('index/course')}" class="my-title-r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Related Courses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>			
+		</h1>
+	<div class="mui-content c-main">
+	<ul class="bg-white">
+    <div class="mui-row" >
+    	<volist name="course" id="v">
+        <div class="mui-col-sm-6 mui-col-xs-6" style="padding-right: 5px;">       	
+            <a class="" href="{:U('index/course',array('kinds'=>$v['id']))}">
+            <li class="boxshadow">
+            	               
+                    <img src="{$v.pic}" width="100%" height="180"/>  
+					<p class="titles">{$v.name}</p> 
+            </li>
+            </a>
+            
+        </div>
+    		
+    	</volist>
+  </div>
+</ul>
+	</div>
+	<br>
+		<h1 class="titlebar">
+			<a href="{:U('index/cases')}" class="my-title-l">成功案例</a>
+			<a href="{:U('index/cases')}" class="my-title-r">&nbsp;&nbsp;&nbsp;&nbsp;Successful Cases&nbsp;&nbsp;&nbsp;&nbsp;</a>			
+		</h1>
+
+	<div class="mui-content bg-white" >
+		<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+		    <a class="mui-control-item mui-active" href="#item1">叛逆厌学</a>
+		    <a class="mui-control-item" href="#item2">贪玩早恋</a>
+		    <a class="mui-control-item" href="#item3">沉迷游戏</a>
+		    <a class="mui-control-item" href="#item4">其它问题</a>
+		</div>
+		<div id="item1" class="mui-control-content mui-active">
+			<ul class="mui-table-view">
+				<volist name="case1" id="v">
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}">
+			            <img class="mui-pull-left mr-10" src="{$v.pic}" width="100" height="100">
+			            <div class="mui-media-body mui-ellipsis c-title">
+			                {$v.title}<p class='mui-ellipsis-2 f-12 mt-10' style="height: 60px;overflow: hidden;">{$v.description}</p>			                
+			            </div>	
+			            
+			        </a>			        
+			    </li>					
+				</volist>
+			</ul>
+		</div>
+		<div id="item2" class="mui-control-content">
+			<ul class="mui-table-view">
+				<volist name="case2" id="v">
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}">
+			            <img class="mui-pull-left mr-10" src="{$v.pic}" width="100" height="100">
+			            <div class="mui-media-body mui-ellipsis c-title">
+			                {$v.title}<p class='mui-ellipsis-2 f-12 mt-10' style="height: 60px;overflow: hidden;">{$v.description}</p>			                
+			            </div>	
+			            
+			        </a>			        
+			    </li>					
+				</volist>
+			</ul>
+		
+		</div>
+		<div id="item3" class="mui-control-content">
+			<ul class="mui-table-view">
+				<volist name="case3" id="v">
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}">
+			            <img class="mui-pull-left mr-10" src="{$v.pic}" width="100" height="100">
+			            <div class="mui-media-body mui-ellipsis c-title">
+			                {$v.title}<p class='mui-ellipsis-2 f-12 mt-10' style="height: 60px;overflow: hidden;">{$v.description}</p>			                
+			            </div>	
+			            
+			        </a>			        
+			    </li>					
+				</volist>
+			</ul>
+		
+		
+		</div>
+		<div id="item4" class="mui-control-content">
+			<ul class="mui-table-view">
+				<volist name="case4" id="v">
+			    <li class="mui-table-view-cell mui-media">
+			        <a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}">
+			            <img class="mui-pull-left mr-10" src="{$v.pic}" width="100" height="100">
+			            <div class="mui-media-body mui-ellipsis c-title">
+			                {$v.title}<p class='mui-ellipsis-2 f-12 mt-10' style="height: 60px;overflow: hidden;">{$v.description}</p>			                
+			            </div>	
+			            
+			        </a>			        
+			    </li>					
+				</volist>
+			</ul>		
+		
+		</div>
+	</div>
+	<br>
+		<h1 class="titlebar">
+			<a href="{:U('index/team')}" class="my-title-l">师资团队</a>
+			<a href="{:U('index/team')}" class="my-title-r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teacher`s Team&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>			
+		</h1>
+
+	<div class="mui-content c-main">
+		<div class="picMarquee-left">
+			<div class="bd">
+				<ul class="picList">
+					<volist name="team" id="v">					
+					<li>
+						<div class="pic"><a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}" target="_self"><img src="{$v.pic}" /></a></div>
+						<div class="title"><a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}" target="_self">{$v.title}</a></div>
+					</li>					
+					</volist>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<br>
+		<h1 class="titlebar">
+			<a href="{:U('index/news')}" class="my-title-l">新闻资讯</a>
+			<a href="{:U('index/news')}" class="my-title-r">New And Information</a>			
+		</h1>
+	<p class="mui-content-padded c-main">
+		<ul class="mui-table-view">
+			<volist name="news" id="v">
+			<a href="{:U('index/show',array('kinds'=>$v['kinds'],'id'=>$v['id']))}" target="_self">
+		    <li class="mui-table-view-cell mui-ellipsis"><i class="mui-icon mui-icon-paperplane"></i>{$v.title}</li>
+		   </a>
+		    </volist>
+		</ul>
+
+	</p>
+	<br>
+		<h1 class="titlebar">
+			<a href="{:U('index/contact')}" class="my-title-l">联系我们</a>
+			<a href="{:U('index/contact')}" class="my-title-r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>			
+		</h1>
+	<div class="mui-content bg-white">
+	    <div class="mui-row">
+	        <div class="mui-col-sm-7 mui-col-xs-7">
+	            <li class="mui-table-view-cell ">
+	            	<p class="c-main">电话：{$site.site_tel}</p>
+	            	<p class="c-main">微信：{$wxname}</p>
+	            	<p class="c-main">QQ：{$qq.0}</p>
+	            	<p class="c-main">地址：{$site.site_addr}</p>
+	            </li>
+	        </div>
+	        <div class="mui-col-sm-5 mui-col-xs-5 mui-text-right">
+	            	<img src="{$wx}" width="120"/>
+	            
+	        </div>
+	    </div>
+	</div>
+	
+<include file="Common:footer" />

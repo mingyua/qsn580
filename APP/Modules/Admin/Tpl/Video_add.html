@@ -1,0 +1,250 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script type="text/javascript">
+		window.UEDITOR_HOME_URL='__ROOT__/Ueditor/';
+		window.onload=function(){
+			UE.getEditor('content');
+			}
+        </script>
+		<script src="__ROOT__/Ueditor/ueditor.config.js"></script>
+		<script src="__ROOT__/Ueditor/ueditor.all.min.js"></script>
+		<script src="__PUBLIC__/js/common.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/lib/zyupload/control/css/zyUpload.css" type="text/css">
+		
+		<!--图片弹出层样式 必要样式-->
+		<!-- 引用核心层插件 -->
+		<script type="text/javascript" src="__PUBLIC__/lib/zyupload/core/zyFile.js"></script>
+		<!-- 引用控制层插件 -->
+		<script type="text/javascript" src="__PUBLIC__/lib/zyupload/control/js/zyUpload.js"></script>
+
+<title>	{$title}</title>
+</head>
+<body>
+
+<div class="admin">
+{$nav}
+<div id="tab-system" class="HuiTab pd-10">
+	<div class="tabBar cl"><span>视频信息</span><span>组图上传</span></div>
+		<div class="tabCon">
+		<form action="{:U(GROUP_NAME.'/Video/add')}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>视频标题：</label>
+			<div class="formControls col-10">
+				<input type="text" class="input-text" value="" placeholder="" id="title" name="title">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">英文标题：</label>
+			<div class="formControls col-10">
+				<input type="text" class="input-text" style="width:400px" value="" id="entitle" name="entitle"><input type="button" class="btn" id="pinyin_btn" value="转换">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>分类栏目：</label>
+			<div class="formControls col-2"> <span class="select-box">
+				<select name="kinds" class="select">
+					<option value="{$plist['kinds']}">{$plist['cate']}</option>
+				   <foreach name="cate" item="v">
+					<option value="{$v.id}">{$v.html}{$v.name}</option>
+					</foreach>
+				</select>
+				</span> </div>
+			<label class="form-label col-2"><span class="c-red">*</span>地区选择：</label>
+			<div class="formControls col-2"> <span class="select-box">
+				<select name="area" class="select">
+					<option value="{$plist.area}">{$plist.area}</option>
+				   <foreach name="industry" item="v">
+					<option value="{$v.name}">{$v.name}</option>
+					</foreach>
+				</select>
+				</span> </div>
+			<label class="form-label col-2">排序值：</label>
+			<div class="formControls col-2">
+				<input type="text" class="input-text" value="{$plist.sort}" placeholder="" id="sort" name="sort">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">总集数：</label>
+			<div class="formControls col-10">
+				<input type="text" name="total" id="total" placeholder="" value="{$plist.total}" class="input-text" style=" width:25%">
+				当前更新到
+				<input type="text" name="nowji" id="nowji" placeholder="" value="{$plist.nowji}" class="input-text" style=" width:25%">
+				</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">影片标签：</label>
+			<div class="formControls col-10">
+				<input type="text" name="tag" id="tag" placeholder="" value="" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2"></label>
+			<div class="formControls col-10 tag-m">
+			   <foreach name="tag" item="v">
+				<label><input type="checkbox" name="aaa" value="1" /><span>{$v.name}</span></label>
+				</foreach>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">上映年代：</label>
+			<div class="formControls col-4">
+				<input type="text" class="date-y input-text" style="width:180px;" name="starttime" placeholder="请选择日期" value="<?php echo date('Y',time())?>">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-2">主演：</label>
+			<div class="formControls col-10">
+				<input type="text" name="zhuyan" id="zhuyan" placeholder="多个关键字用英文逗号隔开，限10个关键字" value="{$plist.zhuyan}" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">导演：</label>
+			<div class="formControls col-10">
+				<input type="text" name="daoyan" id="daoyan" placeholder="多个关键字用英文逗号隔开，限10个关键字" value="{$plist.daoyan}" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">手机播放地址：</label>
+			<div class="formControls col-10">
+				<textarea name="phone_url"  class="textarea"  placeholder="说点什么...最少输入10个字符"  nullmsg="备注不能为空！">{$plist.phone_url}</textarea>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">视频地址：</label>
+			<div class="formControls col-10">
+				<textarea name="play_url"  class="textarea"  placeholder="说点什么...最少输入10个字符"  nullmsg="备注不能为空！">{$plist.play_url}</textarea>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">缩略图：</label>
+			<div class="formControls col-10">
+				<div class="uploader-thum-container">
+					<span class="btn-upload" style="float:left">
+					  <a style="z-index:2;" href="javascript:void();" class="btn-uploadpic">浏览</a>
+					  <input type="file" name="file"  id="imgong" onchange="preImg(this.id,'img1');" value="{$sys['logo']}" class="input-file">
+					  </span><span class="ml-10" style="float:left;" ><img id="img1" src="" style="display: block;" /></span>
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">详细内容：</label>
+			<div class="formControls col-10"> 
+				<textarea id="content" name="contents"  style="width:100%;height:400px;"></textarea> 
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">推荐</label>
+			<div class="formControls col-10"> 
+				<input name="status" type="radio" value="1" />{:C('yes')}&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="status" type="radio" value="0" <if condition="$plist['status'] eq 0" > checked="checked" </if> />{:C('no')}</cite>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-10 col-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+				
+		</form>
+		</div>
+		<div class="tabCon">
+		<div id="demo" class="pl-10"></div>   
+		</div>
+</div>
+
+
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script type="text/javascript">
+$(function(){
+	var str_zh = $("#title").val();
+	strtopy(str_zh);
+	$("#pinyin_btn").click(function(){
+		var str = $("#title").val();
+		strtopy(str);
+	});
+});
+function strtopy(str_zh){
+	$.post("{:U(GROUP_NAME.'/Product/changeen')}",{str:str_zh},function(data){
+		$("#re_zh").html(str_zh);
+		$("#entitle").val(data);
+	});
+}
+//事件 获取checkbox点击时候的父元素的值 添加到text 如果点击收的选中状态为checked 则添加 否则 删除
+$("input[type=checkbox]").click(function () {
+   try {
+	   if ($(this).attr("checked")) {
+		   $("#tag").val($("#tag").val() + $(this).parent().text() + ";");
+	   } else {
+		   $("#tag").val($("#tag").val().replace($(this).parent().text() + ';', ""));
+	   }
+   } catch (e) {
+	   $("#tag").val("");
+   }
+})
+
+</script>
+
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+
+$(function(){
+	// 初始化插件
+	$("#demo").zyUpload({
+		width            :   "650px",                 // 宽度
+		height           :   "400px",                 // 宽度
+		itemWidth        :   "120px",                 // 文件项的宽度
+		itemHeight       :   "100px",                 // 文件项的高度
+		//url              :   "/upload/UploadAction",  // 上传文件的路径
+		url              :   "{:U(GROUP_NAME.'/Product/uploadImg')}",
+		multiple         :   true,                    // 是否可以多个文件上传
+		dragDrop         :   true,                    // 是否可以拖动上传文件
+		del              :   true,                    // 是否可以删除文件
+		finishDel        :   false,  				  // 是否在上传文件完成后删除预览
+		/* 外部获得的回调接口 */
+		onSelect: function(selectFiles, allFiles){    // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
+			console.info("当前选择了以下文件：");
+			console.info(selectFiles);
+		},
+		onProgress: function(file, loaded, total){    // 正在上传的进度的回调方法
+			console.info("当前正在上传此文件：");
+			console.info(file.name);
+			console.info("进度等信息如下：");
+			console.info(loaded);
+			console.info(total);
+		},   
+		onDelete: function(file, files){              // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
+			console.info("当前删除了此文件：");
+			console.info(file.name);
+		},
+		onSuccess: function(file, response){          // 文件上传成功的回调方法
+			console.info("此文件上传成功：");
+			console.info(file.name);
+		},
+		onFailure: function(file, response){          // 文件上传失败的回调方法
+			console.info("此文件上传失败：");
+			console.info(file.name);
+		},
+		onComplete: function(response){           	  // 上传完成的回调方法
+			console.info("文件上传完成");
+			console.info(response);
+		}
+	});
+	
+});
+
+
+</script>
+
+</body>
+</html>

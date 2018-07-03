@@ -1,0 +1,49 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>{$title}</title>
+</head>
+<body>
+<div class="admin">
+{$nav}
+<div class="pd-20">
+
+<form action="{:U(GROUP_NAME.'/System/select_add')}" method="post" id="myForm" enctype="multipart/form-data">
+    <table class="table table-border table-bordered table-hover table-bg">
+    	<tr>
+        	<td width="150">上级导航</td>
+            <td>
+            	<select class="select" name="pid">
+            	<option value="0">作为一级导航</option>
+                   <foreach name="hangye" item="v">
+                    <option value="{$v.id}">{$v.html}{$v.name}</option>
+                    </foreach>
+            	</select>
+            </td>
+        </tr>
+        <tr>
+            <td width="150">行业名称</td>
+            <td><input type="text" name="name" class="input-text" datatype="*" value="" /></td>
+        </tr>
+        <tr>
+            <td width="150">导航标题</td>
+            <td><input type="text" name="title" class="input-text"  /></td>
+        </tr>       
+        <tr>
+            <td width="150">导航描述</td>
+            <td><textarea class="textarea" name="description"></textarea></td>
+        </tr>
+        <tr>
+            <td width="150">排序</td>
+            <td><input type="text" name="sort" class="input-text" datatype="*" value="100" /></td>
+        </tr> 
+		<tr>
+            <td width="150">是否显示</td>
+            <td>显示 <input type="radio" name="status"  value="1" checked="checked" /> 　不显示 <input type="radio" name="status"  value="0" /> </td>
+        </tr>
+    	<tr><td></td><td><input type="submit" value="添加" class="btn btn_submit" /> <input type="button" value="返回" onclick="location.href='javascript:history.go(-1)'" class="btn" /></td></tr>
+    </table>
+    </form>
+	</div>
+	</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

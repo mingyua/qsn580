@@ -1,0 +1,109 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>{$title}</title>
+</head>
+<body>
+<div class="topsearch">
+<span class="topshadow bgadd"><a href="javascript:;"><i class="Hui-iconfont Hui-iconfont-manage"></i>用户列表</a></span>
+<span class="topshadow bgdel"><a href="javascript:;" onClick="all_del(this,'{:U(GROUP_NAME.'/Rbac/delall')}')"><i class="Hui-iconfont Hui-iconfont-del2 "></i>批量删除</a></span>
+<span class="topshadow bgf5 right"><a href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont Hui-iconfont-huanyipi"></i></a></span>
+<span class="topright">
+    <form class="Huiform" method="post" action="{:U(GROUP_NAME. '/Rbac/addUser')}" target="_self">
+      <input type="text" placeholder="帐号" name="username" autocomplete="off" value="" class="input-text" style=" width:150px">
+      <input type="password" name="password" placeholder="密码" autocomplete="on" value="" class="input-text" style="width:150px;">
+      <input type="password" name="repassword" placeholder="确认密码" autocomplete="on" value="" class="input-text" style="width:150px;">
+      <span class="select-box" style="width:150px;">
+      <select class="select" name="role_id[]" size="1">
+		<foreach name="role" item="v">
+				<option value="{$v['id']}">{$v.name}</option>
+		</foreach>
+      </select>
+      </span>
+      <input type="submit" class="btn btn-success" id="" name="submit" value="添加">
+    </form>
+</span>
+</div>
+<div class="admin">
+<div class="pd-20">
+  <table class="table table-border table-bordered table-bg">
+    <thead>
+      <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="40">ID</th>
+        <th width="40">拍卖号</th>
+        <th width="150">登录名</th>
+        <th>角色</th>
+        <th width="130">登录IP</th>
+        <th width="130">加入时间</th>
+        <th width="100">是否已启用</th>
+        <th width="140">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        <foreach name='user' item='v'>
+      <tr class="text-c">
+        <td><input type="checkbox" value="1" name=""></td>
+        <td>{$v.id}</td>
+        <td>{$v.uid}</td>
+        <td>{$v.username}</td>
+		<td><if condition='$v["username"] eq C(RBAC_SUPERADMIN)'>超级管理员<else/>
+        <ul>
+        <foreach name='v.role' item='value'>
+        <li>{$value.name}({$value.remark})</li>
+        </foreach>
+        </ul>
+        </if></td>
+		<td>{$v.loginip}</td>
+        <td>{$v.logintime|date='Y-m-d H:i',###}</td>
+         <td class="comm-status" rel="{$v.id}" data-status="{$v.lock}"><a title="<if condition='$v["lock"] eq 1'>启用<else/>禁用</if>"><i class="f-20 Hui-iconfont <if condition='$v["lock"] eq 1'>Hui-iconfont-suoding c-red <else/>Hui-iconfont-jiesuo c-primary</if>"></i></a></td>
+		<td class="comm-manage">
+			<a  class="del"  onclick="comm_add('充值','{:U(GROUP_NAME.'/Rbac/chong',array(id=>$v['id']))}')" href="javascript:;" title="充值">充值</a> 
+			<a  class="edit"  onclick="comm_add('编辑','{:U(GROUP_NAME.'/Rbac/edit',array(id=>$v['id']))}')" href="javascript:;" title="编辑"><i class="Hui-iconfont Hui-iconfont-edit"></i>编辑</a> 
+			<a  class="del" onClick="comm_del(this,'{$v.id}','{:U(GROUP_NAME.'/Rbac/userdel',array(id=>$v['id']))}')" href="javascript:;" title="删除"><i class="Hui-iconfont Hui-iconfont-del2"></i>删除</a>
+		</td>
+      </tr>
+        </foreach>
+
+	  </tbody>
+  </table>
+  	 </form>
+	<div class="pagination">{$page}</div><br><br>
+</div>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+<script>
+$(function(){
+	$("table").on('click','.comm-status',function(){
+	var id=$(this).attr('rel');
+	var zt=$(this).attr('data-status');
+	if(zt==1){
+	var cdiv="Hui-iconfont-jiesuo c-primary f-20";
+		var title="未通过";
+	}else{
+	var cdiv="Hui-iconfont-suoding c-red f-20";
+		var title="通过";
+	}
+	var html=$(this);
+		$.ajax({
+			url:"__URL__/status",
+			type:"POST",
+			data:{
+				id:id,
+			},
+			success:function(msg){
+				if(msg==1){
+					html.html('<a title="'+title+'"><i class="Hui-iconfont '+cdiv+'"></i></a>');
+					layer.msg('成功!',{icon:1,time:1000});
+				}else{
+					layer.msg('失败!',{icon:5,time:1000});
+				}
+
+			},
+		
+		});
+	});
+});
+</script>
+</body>
+</html>
+ 

@@ -1,0 +1,81 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/js/common.js"></script>
+<title>试题添加</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="iconfont">&#xf012b;</i> 首页 <span class="c-gray en">&gt;</span>题库管理 <span class="c-gray en">&gt;</span> 试题添加 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="icon-refresh"></i></a></nav>
+<div class="pd-20">
+
+<form  action="{:U(GROUP_NAME.'/Exam/add')}" method="post" enctype="multipart/form-data">
+<table class="table table-border table-bordered table-bg table-hover table-sort">
+<tr>
+    <th class="text-r" width="100">分类选择</th>
+    <td>
+     <select class="select" name="kinds" style="width:200px">
+    <option value="">=={:C('select_typeid')}==</option>
+   <foreach name="cate" item="v">
+    <option value="{$v.id}">{$v.html}{$v.name}</option>
+    </foreach>
+    </select>
+    </td>
+</tr>
+<tr>
+    <th class="text-r">标题</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="question" value="" id="formGroupInputSmall" placeholder="">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">选项</th>
+    <td>
+	<textarea  class="textarea" rows="5" cols="80"  name="answer"></textarea>
+      
+    </td>
+</tr>
+<tr>
+    <th class="text-r">正确答案</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="correct" id="formGroupInputSmall" placeholder="">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">图片地址</td>
+    <td>
+     <span class="btn-upload" style="float:left">
+	  <a style="z-index:2;" href="javascript:void();" class="btn-uploadpic">浏览</a>
+	  <input type="file" name="file"  id="imgong" onchange="preImg(this.id,'img1');" value="{$sys['image']}" class="input-file">
+	  </span><span class="ml-10" style="float:left;" ><img id="img1" src="" style="display: block;" /></span>
+    </td>
+</tr>
+<tr>
+    <th class="text-r">答案解析</th>
+    <td>
+      <textarea  class="textarea" rows="5" cols="80"  name="analysis"></textarea>
+    </td>
+</tr>
+<tr>
+    <th class="text-r">排序</th>
+    <td>
+      <input class="input-text" style="width:500px"  type="text" name="sort" id="formGroupInputSmall" placeholder="100">
+    </td>
+</tr>
+<tr>
+    <th class="text-r">是否显示</th>
+    <td>
+      <input type="radio" name="status" value="1" />显示
+      <input type="radio" name="status" value="0" />不显示
+    </td>
+</tr>
+<tr>
+    <th class="text-r"> <input class="input-text" style="width:500px"  type="hidden" name="time" value="{$time}"></th>
+    <td>
+       <button type="submit" name="submit" class="btn btn-primary">马上发布</button>
+       <button type="button" class="btn btn-primary">取消</button>
+    </td>
+</tr>
+</table>
+  </form> 
+	</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

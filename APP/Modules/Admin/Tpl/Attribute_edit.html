@@ -1,0 +1,64 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<script src="__PUBLIC__/lib/jquery.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/lib/color/css/jquery.cxcolor.css">
+		<script src="__PUBLIC__/js/common.js"></script>
+<title>基本设置</title>
+</head>
+<body>
+<div class="pd-20 text-c">
+ 	<form action="{:U(GROUP_NAME.'/Attribute/edit')}" method="post" enctype="multipart/form-data"> 
+    <table class="table table-border table-bordered table-hover table-bg">
+	
+    <tr>
+    <td width="150">属性类别<b>*</b></td>
+    <td><select class="select" name="module">
+    <option value="<if condition="$k['id'] eq null" >{$k['module']}</if>"><if condition="$k['id'] eq null" >=={:C('select_typeid')}==<else/>{$k['module']}</if></option>
+    <option value="Article">文章属性</option>
+    <option value="product">产品属性</option>
+    </select></td>
+    </tr>
+
+    <tr>
+    <td width="150">属性名称<b>*</b></td>
+    <td>
+	<input id="title" name="name" type="text" class="input-text" value="{$k['name']}" style="width:300px;"  />
+<input id="color_d" name="color" type="text" class="input_cxcolor" readonly value="{$k['color']}">
+		<script src="__PUBLIC__/lib/color/jquery.cxcolor.min.js"></script>
+		<script>
+		(function(){
+		  var color = $('#color_d');
+		  var title = $('#title');
+		  var acts = $('#acts');
+
+		  color.bind('change', function(){
+			title.css('color', this.value)
+		  });
+
+		  color.cxColor(function(api){
+			acts.on('click', 'button', function(){
+			  var _this = $(this);
+			  var _val = _this.data('act');
+			});
+		  });
+		})();
+		</script>		</td>
+   	
+ </tr>
+
+    <tr>
+    <td width="150">排序<b>*</b></td>
+    <td><input name="sort" id="sort" type="text" class="input-text" value="{$k['sort']}"  /></td>
+    </tr>
+    <input name="id" type="hidden" value="{$k['id']}"  />
+    <tr><td width="150">是否启用</td><td><cite><input name="status" type="radio" value="1" checked="checked" />{:C('yes')}&nbsp;&nbsp;&nbsp;&nbsp;<input name="status" type="radio" value="0" />{:C('no')}</cite></td></tr>
+    
+    
+    
+    
+    <tr><td width="150">&nbsp;</td><td><input name="submit" type="submit" class="btn" value="{:C('on_save')}"/></td></tr>
+</table>    
+    </form>
+</div>
+<include file="APP/Modules/Admin/TPL/_footer.html"/>
+</body>
+</html>

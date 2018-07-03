@@ -1,0 +1,24 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+<title>	{title}</title>
+</head>
+<body>
+{$nav}
+<div class="pd-20">
+<form method="post"> 
+<input type="button" id="button" class="btn btn-secondary radius" value="清除缓存">
+</form>
+<p class="msg"></p>
+<script type="text/javascript">
+$(function(){
+	$("#button").click(function(){
+			$.post("{:U(GROUP_NAME.'/Cache/cache_clean')}",function(data){
+				$('.msg').html(data);
+			});
+			
+	});
+	
+});
+
+</script>
+</body>
+</html>

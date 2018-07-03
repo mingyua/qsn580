@@ -1,0 +1,32 @@
+<include file="APP/Modules/Admin/TPL/_header.html"/>
+		<script src="__PUBLIC__/js/common.js"></script>
+<title>微信消息回复</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="iconfont">&#xf012b;</i> 首页 <span class="c-gray en">&gt;</span> 微信公众平台 <span class="c-gray en">&gt;</span> 消息回复 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="icon-refresh"></i></a></nav>
+<div class="pd-20">
+<form action="{:U(GROUP_NAME. '/weixin/resphone','','')}" method="post">   
+ <table class="table table-border table-bordered table-bg">  
+    <tr>
+		<td class="text-r va-t">收件人:</td>
+		<td><input name="name" type="text" class="input-text" value=""/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">原消息：</td>
+		<td><input name="remark" type="text" class="input-text" value=""/></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t">内　容：</td>
+		<td><textarea name="remark" class="textarea"> </textarea></td>
+	</tr>
+    <tr>
+		<td class="text-r va-t"></td>
+		<td><input name="submit" type="submit" class="btn" value="发送"/></td>
+	</tr>
+	
+	</table>
+ </form>   
+    </div> 
+    </div>
+</body>
+</html>
